@@ -1,0 +1,405 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Analiza danych cyfrowych wcześniej leczonych pacjentów</h3>
+            <div title="Demonstrator technologii algorytmu postępowania na podstawie analizy danych cyfrowych wcześniej leczonych pacjentów w zestawieniu z najnowszymi doniesieniami naukowymi">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+        <form (ngSubmit)="onSubmit()" (input)="onSubmit()">
+
+            <div style="display: flex; gap: 0px;">
+                <div style="width: 400px; font-size: 10px;">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><b>Nazwa zlecenia</b></div>
+                    <div class="form-group grid-left" style="font-size: 12px;"><b>Badanie lekarskie</b></div>
+                    <div class="form-group grid-left myStyle">Badanie neurologiczne</div>
+                    <div class="form-group grid-left">Ocena bólu</div>
+                    <div class="form-group grid-left myStyle">Monitorowanie temperatury</div>
+                    <div class="form-group grid-left">Pomiar wzrostu</div>
+                    <div class="form-group grid-left myStyle">Pomiar masy</div>
+                    <div class="form-group grid-left">Podstawowe funkcje życiowe (tętno, oddech; SatO2, ciśnienie,
+                        temp.)</div>
+                    <div class="form-group grid-left myStyle">Monitor saturacji O2</div>
+                    <div class="form-group grid-left">Monitorowanie rytmu serca</div>
+                    <div class="form-group grid-left myStyle">Monitorowanie ciśnienia wewnątrzczaszkowego</div>
+                    <div class="form-group grid-left">Monitorowanie systemowego ciśnienia tętniczego</div>
+                    <div class="form-group grid-left myStyle">Nieinwazyjny pomiar zawartości dwutlenku węgla w wydychanym
+                        powietrzu</div>
+                    <div class="form-group grid-left">Monitorowanie hemodynamiczne centralnego ciśnienia żylnego</div>
+                    <div class="form-group grid-left myStyle" style="font-size: 12px;"><b>Badania obrazowe i inne</b></div>
+                    <div class="form-group grid-left">Elektrokardiogram z co najmniej 12 odprowadzeniami</div>
+                    <div class="form-group grid-left myStyle">Elektroencefalografia (EEG)</div>
+                    <div class="form-group grid-left">Słuchowe potencjały wywołane z pnia mózgu</div>
+                    <div class="form-group grid-left myStyle">Somatosensoryczne potencjały wywołane</div>
+                    <div class="form-group grid-left">Wzrokowe potencjały wywołane</div>
+                    <div class="form-group grid-left myStyle">RTG, klatka piersiowa</div>
+                    <div class="form-group grid-left">RTG, kręgosłup szyjny</div>
+                    <div class="form-group grid-left myStyle">TK, mózg</div>
+                    <div class="form-group grid-left">TK, kręgosłup szyjny</div>
+                    <div class="form-group grid-left myStyle">TK, szyja</div>
+                    <div class="form-group grid-left">MRI, mózg</div>
+                    <div class="form-group grid-left myStyle" style="font-size: 12px;"><b>Badania laboratoryjne</b></div>
+                    <div class="form-group grid-left">Podstawowy panel metaboliczny</div>
+                    <div class="form-group grid-left myStyle">Morfologia krwi (CBC)</div>
+                    <div class="form-group grid-left">Poziom kreatyniny, surowica</div>
+                    <div class="form-group grid-left myStyle">Grupa krwi w ukł. ABO, Rh i Ab</div>
+                    <div class="form-group grid-left">D-dimer</div>
+                    <div class="form-group grid-left myStyle">Lipidogram</div>
+                    <div class="form-group grid-left">Mleczan</div>
+                    <div class="form-group grid-left myStyle">Mózgowy peptyd natriuretyczny</div>
+                    <div class="form-group grid-left">Białko C-reaktywne</div>
+                    <div class="form-group grid-left myStyle">Gazometria krwi tętniczej</div>
+                    <div class="form-group grid-left">Czas protrombinowy</div>
+                    <div class="form-group grid-left myStyle">Czas częściowej tromboplastyny</div>
+                    <div class="form-group grid-left">Czas częściowej tromboplastyny</div>
+                    <div class="form-group grid-left myStyle">Amylaza</div>
+                    <div class="form-group grid-left">Stężenie lipazy, sur/osocz</div>
+                    <div class="form-group grid-left myStyle">Kompleksowy panel metaboliczny</div>
+                    <div class="form-group grid-left">Posiew krwi</div>
+                    <div class="form-group grid-left myStyle">Barwienie metodą Grama, posiew i czułość</div>
+                    <div class="form-group grid-left">Fosfor (lab)</div>
+                    <div class="form-group grid-left myStyle">Osmolarność</div>
+                    <div class="form-group grid-left" style="font-size: 12px;"><b>Leki</b></div>
+                    <div class="form-group grid-left myStyle">ranitydyna</div>
+                    <div class="form-group grid-left">pantoprazol</div>
+                    <div class="form-group grid-left myStyle">ondansetron</div>
+                    <div class="form-group grid-left">fitomenadion</div>
+                    <div class="form-group grid-left myStyle">połączenia czynników krzepnięcia IX, II, VII i X</div>
+                    <div class="form-group grid-left">mannitol</div>
+                    <div class="form-group grid-left myStyle">amoksycylina z inhibitorem beta-laktamazy</div>
+                    <div class="form-group grid-left">cefepim</div>
+                    <div class="form-group grid-left myStyle">lewofloksacyna</div>
+                    <div class="form-group grid-left">wankomycyna</div>
+                    <div class="form-group grid-left myStyle">deks-ketoprofen</div>
+                    <div class="form-group grid-left">fentanyl</div>
+                    <div class="form-group grid-left myStyle">tramadol</div>
+                    <div class="form-group grid-left">Pirazolony, leki przeciwbólowe i przeciwgorączkowe</div>
+                    <div class="form-group grid-left myStyle">fenytoina</div>
+                    <div class="form-group grid-left">lewetiracetam</div>
+                    <div class="form-group grid-left myStyle">klonazepam</div>
+                    <div class="form-group grid-left">karbamazepina</div>
+                    <div class="form-group grid-left myStyle">kwas walproinowy</div>
+                    <div class="form-group grid-left">lakozamid</div>
+                    <div class="form-group grid-left myStyle">brywaracetam</div>
+                    <div class="form-group grid-left ">kortykosterydy</div>
+                    <div class="form-group grid-left myStyle">leki przeciwzakrzepowe</div>
+                    <div class="form-group grid-left"><br></div>
+                </div>
+                <div style="width: 100px;">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><b>System kodowania</b></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle">SNOMED-CT</div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">SNOMED-CT</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left">LOINC</div>
+                    <div class="form-group grid-left myStyle">LOINC</div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">ATC</div>
+                    <div class="form-group grid-left myStyle">ATC</div>
+                    <div class="form-group grid-left">-</div>
+                    <div class="form-group grid-left myStyle">-</div>
+                    <div class="form-group grid-left"><br></div>
+                </div>
+                <div style="width: 100px;">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><b>Kod koncepcyjny</b></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle">84728005</div>
+                    <div class="form-group grid-left">225399009</div>
+                    <div class="form-group grid-left myStyle">133879001</div>
+                    <div class="form-group grid-left">14456009</div>
+                    <div class="form-group grid-left myStyle">39857003</div>
+                    <div class="form-group grid-left">304495004</div>
+                    <div class="form-group grid-left myStyle">284034009</div>
+                    <div class="form-group grid-left">23852006</div>
+                    <div class="form-group grid-left myStyle">182796001</div>
+                    <div class="form-group grid-left">42826002</div>
+                    <div class="form-group grid-left myStyle">438575002</div>
+                    <div class="form-group grid-left">86265008</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">268400002</div>
+                    <div class="form-group grid-left myStyle">54550000</div>
+                    <div class="form-group grid-left">708692006</div>
+                    <div class="form-group grid-left myStyle">398116004</div>
+                    <div class="form-group grid-left">63107007</div>
+                    <div class="form-group grid-left myStyle">399208008</div>
+                    <div class="form-group grid-left">66769009</div>
+                    <div class="form-group grid-left myStyle">34227000</div>
+                    <div class="form-group grid-left">241578008</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">816077007</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">24321-2</div>
+                    <div class="form-group grid-left myStyle">58410-2</div>
+                    <div class="form-group grid-left">2160-0</div>
+                    <div class="form-group grid-left myStyle">882-1</div>
+                    <div class="form-group grid-left">48067-3</div>
+                    <div class="form-group grid-left myStyle">24331-1</div>
+                    <div class="form-group grid-left">2524-7</div>
+                    <div class="form-group grid-left myStyle">30934-4</div>
+                    <div class="form-group grid-left">11039-5</div>
+                    <div class="form-group grid-left myStyle">24336-0</div>
+                    <div class="form-group grid-left">34528-0</div>
+                    <div class="form-group grid-left myStyle">14979-9</div>
+                    <div class="form-group grid-left">24356-8</div>
+                    <div class="form-group grid-left myStyle">24333-7</div>
+                    <div class="form-group grid-left">3040-3</div>
+                    <div class="form-group grid-left myStyle">24323-8</div>
+                    <div class="form-group grid-left">600-7</div>
+                    <div class="form-group grid-left myStyle">664-3</div>
+                    <div class="form-group grid-left">2777-1</div>
+                    <div class="form-group grid-left myStyle">2692-2</div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle">A02BA02</div>
+                    <div class="form-group grid-left">A02BC02</div>
+                    <div class="form-group grid-left myStyle">A04AA01</div>
+                    <div class="form-group grid-left">B02BA01</div>
+                    <div class="form-group grid-left myStyle">B02BD01</div>
+                    <div class="form-group grid-left">B05BC01</div>
+                    <div class="form-group grid-left myStyle">J01CR02</div>
+                    <div class="form-group grid-left">J01DE01</div>
+                    <div class="form-group grid-left myStyle">J01MA12</div>
+                    <div class="form-group grid-left">J01XA01</div>
+                    <div class="form-group grid-left myStyle">M01AE17</div>
+                    <div class="form-group grid-left">N01AH01</div>
+                    <div class="form-group grid-left myStyle">N02AX02</div>
+                    <div class="form-group grid-left">N02BB</div>
+                    <div class="form-group grid-left myStyle">N03AB02</div>
+                    <div class="form-group grid-left">N03AX14</div>
+                    <div class="form-group grid-left myStyle">N03AE01</div>
+                    <div class="form-group grid-left">N03AF01</div>
+                    <div class="form-group grid-left myStyle">N03AG01</div>
+                    <div class="form-group grid-left">N03AX18</div>
+                    <div class="form-group grid-left myStyle">N03AX23</div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                </div>
+                <div style="width: 500px; font-size: 10px;">
+                    <div class="form-group grid-left" style="text-align: right;"><b>Łączna liczba pacjentów:</b> </div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><b>Opis koncepcyjny</b></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle">Badanie neurologiczne (procedura)</div>
+                    <div class="form-group grid-left">Ocena bólu (procedura)</div>
+                    <div class="form-group grid-left myStyle">Monitorowanie temperatury pacjenta (tryb/terapia)</div>
+                    <div class="form-group grid-left">Pomiar wzrostu pacjenta (procedura)</div>
+                    <div class="form-group grid-left myStyle">Pomiar masy pacjenta (procedura)</div>
+                    <div class="form-group grid-left">Monitorowanie podstawowych funkcji życiowych (tryb/terapia)</div>
+                    <div class="form-group grid-left myStyle">Monitorowanie za pomocą pulsoksymetru (tryb/terapia)</div>
+                    <div class="form-group grid-left">Monitoring kardiologiczny (tryb/terapia)</div>
+                    <div class="form-group grid-left myStyle">Tryb monitorowania ciśnienia wewnątrzczaszkowego (tryb/terapia)
+                    </div>
+                    <div class="form-group grid-left">Monitorowanie systemowego ciśnienia tętniczego (tryb/terapia)
+                    </div>
+                    <div class="form-group grid-left myStyle">Pomiar reakcji oddechowej na dwutlenek węgla (procedura)</div>
+                    <div class="form-group grid-left">Monitorowanie centralnego ciśnienia żylnego (tryb/terapia)</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">Elektrokardiogram z 12 odprowadzeniami (procedura)</div>
+                    <div class="form-group grid-left myStyle">Elektroencefalogram (procedura)</div>
+                    <div class="form-group grid-left">Śródoperacyjne badanie słuchowych potencjałów wywołanych z pnia
+                        mózgu (procedura)</div>
+                    <div class="form-group grid-left myStyle">Monitorowanie somatosensorycznych potencjałów wywołanych
+                        (tryb/terapia)</div>
+                    <div class="form-group grid-left">Badanie wzrokowych potencjałów wywołanych (procedura)</div>
+                    <div class="form-group grid-left myStyle">Zwykłe RTG klatki piersiowej (procedura)</div>
+                    <div class="form-group grid-left">Radiografia kręgosłupa szyjnego (procedura)</div>
+                    <div class="form-group grid-left myStyle">Tomografia komputerowa mózgu (procedura)</div>
+                    <div class="form-group grid-left">Tomografia komputerowa kręgosłupa szyjnego (procedura)</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">Obrazowanie mózgu metodą rezonansu magnetycznego (procedura)</div>
+                    <div class="form-group grid-left myStyle"><br></div>
+                    <div class="form-group grid-left">Podstawowy panel metaboliczny (BMP)</div>
+                    <div class="form-group grid-left myStyle">Panel CBC - krew, zliczanie automatyczne</div>
+                    <div class="form-group grid-left">Poziom kreatyniny [masowo/objętościowo] w surowicy lub osoczu
+                    </div>
+                    <div class="form-group grid-left myStyle">Grupa krwi w ukł. ABO i Rh [Typ]</div>
+                    <div style="line-height: 10px;" class="form-group grid-left">FEU (jednostki odpowiadające fibrynogenowi) [masowo/objętościowo]
+                        D-dimeru fibryny w osoczu ubogopłytkowym, metodą testu immunochemicznego</div>
+                    <div class="form-group grid-left myStyle">Lipidogram, S</div>
+                    <div class="form-group grid-left">Mleczan, P (LACS1)</div>
+                    <div class="form-group grid-left myStyle">Peptyd natriuretyczny typu B (BNP)</div>
+                    <div class="form-group grid-left">Białko C-reaktywne [obecność] w surowicy lub osoczu</div>
+                    <div class="form-group grid-left myStyle">Panel gazometryczny - krew tętnicza</div>
+                    <div class="form-group grid-left">Czas protrombinowy, P</div>
+                    <div class="form-group grid-left myStyle">Czas częściowej tromboplastyny po aktywacji (APTT), osocze</div>
+                    <div class="form-group grid-left">Badanie moczu, panel kompleksowy</div>
+                    <div class="form-group grid-left myStyle">Amylaza, izoenzymy, S</div>
+                    <div class="form-group grid-left">Lipaza [aktywność enzymatyczna/objętość] w surowicy lub osoczu
+                    </div>
+                    <div class="form-group grid-left myStyle">Kompleksowy panel metaboliczny (CMP)</div>
+                    <div class="form-group grid-left">Bakterie wykryte we krwi przez posiew</div>
+                    <div class="form-group grid-left myStyle">Barwienie metodą Grama</div>
+                    <div class="form-group grid-left">Fosfor (nieorganiczny), S</div>
+                    <div class="form-group grid-left myStyle">Osmolarność, S</div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left myStyle">LEKI STOSOWANE W CHOROBIE WRZODOWEJ I REFLUKSIE
+                        ŻOŁĄDKOWO-PRZEŁYKOWYM</div>
+                    <div class="form-group grid-left">LEKI STOSOWANE W CHOROBIE WRZODOWEJ I REFLUKSIE
+                        ŻOŁĄDKOWO-PRZEŁYKOWYM</div>
+                    <div class="form-group grid-left myStyle">LEKI PRZECIWWYMIOTNE I ZAPOBIEGAJĄCE NUDNOŚCIOM</div>
+                    <div class="form-group grid-left">WITAMINA K I INNE HEMOSTATYKI</div>
+                    <div class="form-group grid-left myStyle">WITAMINA K I INNE HEMOSTATYKI</div>
+                    <div class="form-group grid-left">dożylne płyny do wlewów</div>
+                    <div class="form-group grid-left myStyle">POŁĄCZENIA PENICYLIN I INHIBITORÓW B-LAKTAMAZY</div>
+                    <div class="form-group grid-left">INNE ANTYBIOTYKI B-LAKTAMOWE w ATC</div>
+                    <div class="form-group grid-left myStyle">CHINOLONY</div>
+                    <div class="form-group grid-left">INNE LEKI PRZECIWBAKTERYJNE w ATC</div>
+                    <div class="form-group grid-left myStyle">NIESTEROIDOWE LEKI PRZECIWZAPALNE I PRZECIWREUMATYCZNE</div>
+                    <div class="form-group grid-left">LEKI DO ZNIECZULENIA OGÓLNEGO</div>
+                    <div class="form-group grid-left myStyle">OPIOIDY</div>
+                    <div class="form-group grid-left">INNE LEKI PRZECIWBÓLOWE I PRZECIWGORĄCZKOWE W ATC</div>
+                    <div class="form-group grid-left myStyle">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left myStyle">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left myStyle">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left myStyle">LEKI PRZECIWDRGAWKOWE</div>
+                    <div class="form-group grid-left"></div>
+                    <div class="form-group grid-left myStyle"></div>
+                </div>
+                <div style="width: 80px;">
+                    <div class="form-group grid-left"><input type="number" class="form-control pole" style="background-color: pink;" id="G[2]"
+                        [(ngModel)]="model.G[2]" name="{{model.G[2]}}"
+                        title="This is the text of the tooltip"></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid"><b>Parametr</b></div>
+                    <div class="form-group grid"><br></div>
+                    <div *ngFor="let item of [].constructor(69); let i = index" class="form-group grid">
+                        <div *ngIf="model.F[i+7] !== undefined">
+                            <input type="number" class="form-control pole" style="background-color: white;" id="i"
+                                [(ngModel)]="model.F[i+7]" name="{{model.F[i+7]}}"
+                                title="This is the text of the tooltip">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 80px;">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid"><b>DANE WEJŚCIOWE</b></div>
+                    <div class="form-group grid"><br></div>
+                    <div *ngFor="let item of [].constructor(69); let i = index" class="form-group grid">
+                        <div *ngIf="model.G[i+7] !== undefined">
+                            <input type="number" class="form-control pole" style="background-color: white;" id="i"
+                                [(ngModel)]="model.G[i+7]" name="{{model.G[i+7]}}"
+                                title="This is the text of the tooltip">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 80px;">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid"><br></div>
+                    <div class="form-group grid"><br></div>
+                    <div *ngFor="let item of [].constructor(69); let i = index" class="form-group grid">
+                        <div *ngIf="this.model.G[i+7] != -1 && model.G[i+7] !== undefined">
+                            <div *ngIf="i >= 0 && i < 13; else second">
+                                <div style="background-color: yellow; color: black; width: {{model.H[i+7]}}%;" class="progress-bar">&nbsp;</div>
+                            </div>
+                            <ng-template #second>
+                                <div *ngIf="i >= 13 && i < 24; else third" style="background-color: green; color: black; width: {{model.H[i+7]}}%;" class="progress-bar">&nbsp;</div>
+                            </ng-template>
+                            <ng-template #third>
+                                <div *ngIf="i >= 24 && i < 45; else fourth" style="background-color: blue; color: black; width: {{model.H[i+7]}}%;" class="progress-bar">&nbsp;</div>
+                            </ng-template>
+                            <ng-template #fourth>
+                                <div style="background-color: pink; color: black; width: {{model.H[i+7]}}%;" class="progress-bar">&nbsp;</div>
+                            </ng-template>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 80px;">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid"><b>Wskaźnik</b></div>
+                    <div class="form-group grid"><br></div>
+                    <div *ngFor="let item of [].constructor(69); let i = index" class="form-group grid box">
+                        <div *ngIf="model.K[i+7] !== undefined">
+                            <div style="background-color: green;"><div
+                                    *ngIf="model.K[i+7] >= 50; else second">{{model.K[i+7] | number :  '1.0-2'}}%</div></div>
+                            <ng-template #second>
+                                <div style="background-color: yellow;"><div
+                                        *ngIf="model.K[i+7] >= 25;else third">{{model.K[i+7] | number :  '1.0-2'}}%</div></div>
+                            </ng-template>
+                            <ng-template #third>
+                                <div style="background-color: red;">
+                                    <div *ngIf="model.K[i+7] >= 0;else fourth">{{model.K[i+7] | number :  '1.0-2'}}%</div>
+                                </div>
+                            </ng-template>
+                            <ng-template #fourth><div style="background-color: black; color: white;">{{model.K[i+7] | number :  '1.0-2'}}%</div></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>

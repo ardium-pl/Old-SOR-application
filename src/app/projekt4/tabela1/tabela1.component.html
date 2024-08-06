@@ -1,0 +1,666 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <h3>Demonstrator technologii algorytmów decyzyjnych agregujących posiadane zasoby systemowe, sprzętowe i ludzkie
+            w taki sposób aby najefektywniej wykorzystać ich potencjał</h3>
+        <br>
+  
+        <form (ngSubmit)="onSubmit()" (input)="onSubmit()">
+
+            <div style="display: flex; gap: 0px;">
+                <div style="width: 80px">
+                    <div class="form-group grid" style="text-wrap: nowrap;">Dostepna liczba lekarzy</div>
+                    <div class="form-group grid"><input type="number" class="form-control pole"
+                            style="background-color: lightyellow;" id="B[6]" [(ngModel)]="model.B[6]"
+                            name="{{model.B[6]}}" title="This is the text of the tooltip"></div>
+                    <div class="form-group grid">lekarz/zmiana</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid">
+                        <input type="number" class="form-control pole" style="background-color: green;" id="i"
+                            [(ngModel)]="model.B[i+8]" name="{{model.B[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid">{{model.B[15]}}</div>
+                    <div class="form-group grid">Wydajność</div>
+                    <div class="form-group grid">Pacjent/lekarz</div>
+                    <div class="form-group grid" style="background-color: lightyellow;">{{model.B[18] | number : '1.1'}}</div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">wybór</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: lightyellow;"
+                            id="i" [(ngModel)]="model.C[i+8]" name="{{model.C[i+8]}}"
+                            title="This is the text of the tooltip">
+                    </div>
+                </div>
+                <div style="width: 190px">
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left">Nazwa zmiany</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" style="text-wrap: nowrap;"
+                        class="form-group grid-left">
+                        {{model.D[i+8]}}
+                    </div>
+                    <div class="form-group grid-left">Pokrycie</div>
+                    <div class="form-group grid-left">Wydajność</div>
+                    <div class="form-group grid-left">Niezaspok. w dan. okre.</div>
+                    <div class="form-group grid-left">Zmienność</div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left"><br></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" style="text-wrap: nowrap;"
+                        class="form-group grid-left">
+                        {{model.D[i+8]}}
+                    </div>
+                    <div class="form-group grid-left"><br></div>
+                    <div class="form-group grid-left">Zapotrzebowanie w ciągu dnia</div>
+                    <div class="form-group grid-left">Pokrycie w ciągu dnia</div>
+                    <div class="form-group grid-left">Zapotrzebowanie niepokryte</div>
+                    <div class="form-group grid-left">Nadwyżka wydajności</div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small" style="text-wrap: nowrap;"><b>Przyjęcia pacjentów - Okres</b>
+                    </div>
+                    <div class="form-group grid-small">0-1</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.E[7]"
+                            name="{{model.E[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.E[i+8]" name="{{model.E[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.E[15]}}</div>
+                    <div class="form-group grid-small">{{model.E[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.E[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.E[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">0</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.E[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="form-group grid-small"><br></div>
+                    <div *ngFor="let item of [].constructor(4); let i = index" class="form-group grid-small">
+                        <div class="form-group grid-small" style="background-color: lightblue;">{{model.E[i+29] | number
+                            : '1.1'}}</div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">1-2</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.F[7]"
+                            name="{{model.F[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.F[i+8]" name="{{model.F[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.F[15]}}</div>
+                    <div class="form-group grid-small">{{model.F[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.F[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.F[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">1</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.F[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">2-3</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.G[7]"
+                            name="{{model.G[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.G[i+8]" name="{{model.G[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.G[15]}}</div>
+                    <div class="form-group grid-small">{{model.G[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.G[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.G[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">2</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.G[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">3-4</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.H[7]"
+                            name="{{model.H[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.H[i+8]" name="{{model.H[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.H[15]}}</div>
+                    <div class="form-group grid-small">{{model.H[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.H[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.H[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">3</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.H[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">4-5</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.I[7]"
+                            name="{{model.I[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.I[i+8]" name="{{model.I[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.I[15]}}</div>
+                    <div class="form-group grid-small">{{model.I[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.I[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.I[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">4</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.I[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">5-6</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.J[7]"
+                            name="{{model.J[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.J[i+8]" name="{{model.J[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.J[15]}}</div>
+                    <div class="form-group grid-small">{{model.J[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.J[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.J[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">5</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.J[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">6-7</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.K[7]"
+                            name="{{model.K[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.K[i+8]" name="{{model.K[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.K[15]}}</div>
+                    <div class="form-group grid-small">{{model.K[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.K[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.K[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">6</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.K[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">7-8</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.L[7]"
+                            name="{{model.L[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.L[i+8]" name="{{model.L[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.L[15]}}</div>
+                    <div class="form-group grid-small">{{model.L[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.L[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.L[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">7</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.L[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">8-9</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.M[7]"
+                            name="{{model.M[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.M[i+8]" name="{{model.M[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.M[15]}}</div>
+                    <div class="form-group grid-small">{{model.M[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.M[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.M[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">8</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.M[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">9-10</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.N[7]"
+                            name="{{model.N[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.N[i+8]" name="{{model.N[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.N[15]}}</div>
+                    <div class="form-group grid-small">{{model.N[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.N[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.N[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">9</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.N[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">10-11</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.O[7]"
+                            name="{{model.O[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.O[i+8]" name="{{model.O[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.O[15]}}</div>
+                    <div class="form-group grid-small">{{model.O[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.O[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.O[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">10</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.O[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">11-12</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.P[7]"
+                            name="{{model.P[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.P[i+8]" name="{{model.P[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.P[15]}}</div>
+                    <div class="form-group grid-small">{{model.P[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.P[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.P[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">11</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.P[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">12-13</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.Q[7]"
+                            name="{{model.Q[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.Q[i+8]" name="{{model.Q[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.Q[15]}}</div>
+                    <div class="form-group grid-small">{{model.Q[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.Q[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.Q[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">12</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.Q[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">13-14</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.R[7]"
+                            name="{{model.R[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.R[i+8]" name="{{model.R[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.R[15]}}</div>
+                    <div class="form-group grid-small">{{model.R[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.R[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.R[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">13</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.R[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">14-15</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.S[7]"
+                            name="{{model.S[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.S[i+8]" name="{{model.S[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.S[15]}}</div>
+                    <div class="form-group grid-small">{{model.S[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.S[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.S[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">14</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.S[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">15-16</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.T[7]"
+                            name="{{model.T[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.T[i+8]" name="{{model.T[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.T[15]}}</div>
+                    <div class="form-group grid-small">{{model.T[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.T[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.T[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">15</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.T[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">16-17</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.U[7]"
+                            name="{{model.U[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.U[i+8]" name="{{model.U[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.U[15]}}</div>
+                    <div class="form-group grid-small">{{model.U[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.U[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.U[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">16</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.U[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">17-18</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.V[7]"
+                            name="{{model.V[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.V[i+8]" name="{{model.V[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.V[15]}}</div>
+                    <div class="form-group grid-small">{{model.V[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.V[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.V[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">17</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.V[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">18-19</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.W[7]"
+                            name="{{model.W[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.W[i+8]" name="{{model.W[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.W[15]}}</div>
+                    <div class="form-group grid-small">{{model.W[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.W[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.W[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">18</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.W[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">19-20</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.X[7]"
+                            name="{{model.X[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.X[i+8]" name="{{model.X[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.X[15]}}</div>
+                    <div class="form-group grid-small">{{model.X[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.X[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.X[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">19</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.X[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">20-21</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.Y[7]"
+                            name="{{model.Y[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.Y[i+8]" name="{{model.Y[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.Y[15]}}</div>
+                    <div class="form-group grid-small">{{model.Y[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.Y[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.Y[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">20</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.Y[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">21-22</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.Z[7]"
+                            name="{{model.Z[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.Z[i+8]" name="{{model.Z[i+8]}}" title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.Z[15]}}</div>
+                    <div class="form-group grid-small">{{model.Z[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.Z[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.Z[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">21</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.Z[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">22-23</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.AA[7]"
+                            name="{{model.AA[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.AA[i+8]" name="{{model.AA[i+8]}}"
+                            title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.AA[15]}}</div>
+                    <div class="form-group grid-small">{{model.AA[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.AA[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.AA[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">22</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.AA[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">23-24</div>
+                    <div class="form-group grid-small"><input type="number" class="form-control pole-small"
+                            style="background-color: lightyellow;" id="E[7]" [(ngModel)]="model.AB[7]"
+                            name="{{model.AB[7]}}" title="This is the text of the tooltip"></div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <input type="number" class="form-control pole-small" style="background-color: white;" id="i"
+                            [(ngModel)]="model.AB[i+8]" name="{{model.AB[i+8]}}"
+                            title="This is the text of the tooltip">
+                    </div>
+                    <div class="form-group grid-small">{{model.AB[15]}}</div>
+                    <div class="form-group grid-small">{{model.AB[16] | number : '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightblue;">{{model.AB[17] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small" style="background-color: lightgray;">{{model.AB[18] | number :
+                        '1.1'}}</div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small">23</div>
+                    <div *ngFor="let item of [].constructor(7); let i = index" class="form-group grid-small">
+                        <div *ngIf="model.AB[i+21] != 0">
+                            <div style="background-color: blue;">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 40px">
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small"><br></div>
+                    <div class="form-group grid-small" style="background-color: green;">{{model.AC17 | number : '1.1'}}
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="chart-container">
+            <canvas id="MyChart">{{ chart }}</canvas>
+        </div>
+    </div>
+</div>

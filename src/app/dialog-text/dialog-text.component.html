@@ -1,0 +1,15 @@
+<mat-dialog-content>
+    <div style="min-width: 300px; ">
+        <span [innerHtml]="message"></span>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <div style="margin-right: 8px;" *ngIf="buttons">
+        <button mat-raised-button color="primary" tabindex="-1">Zapisz</button>
+        <button mat-raised-button color="primary" tabindex="-1">Wyślij</button>
+        <button mat-raised-button color="primary" tabindex="-1">Drukuj</button>
+    </div>
+    <div >
+    <button mat-raised-button color="primary" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+</div>
+</mat-dialog-actions>

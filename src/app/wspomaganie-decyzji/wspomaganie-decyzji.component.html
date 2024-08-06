@@ -1,0 +1,124 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Wspomaganie podejmowania decyzji zarządczych</h3>
+            <div title="Demonstrator technologii algorytmu z zakresu sztucznej inteligencji mające na celu wspomaganie podejmowania decyzji zarządczych z uwzględnieniem danych gromadzonych w całym systemie">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+            <h4><b>Zasoby procesu wykorzystywane na SOR-ze w leczeniu pacjentów</b></h4>
+            <div> <img src="../../assets/tabelka.png"></div>
+            <br>        
+            <h4><b>Ograniczenia ilościowe przyjmowania pacjentów</b></h4>
+            <div style="display: flex; gap: 30px;">
+                <div style="width: 500px;">
+                    <p style="margin-bottom: 10px;">Liczba godzin zajętości łóżek oczekiwania na przyjęcie na oddział szpitalny </p>
+                    <p>Wydajność przyjęcia pacjentów na godzinę  </p>
+                </div>
+                <div style="width: 100px;">
+                    <div style="margin-bottom: 10px;"><input type="number" [(ngModel)]="model.M14"></div>
+                    <div><input type="number" [(ngModel)]="model.N14"></div>
+                </div>
+            </div>
+            <br>        
+            <h4><b>Wprowadź zmianę w następujących zasobach (czas/pacjenta):</b></h4>
+            <div style="display: flex; gap: 30px;"> 
+                <div style="width: 200px;">
+                    <p style="margin-bottom: 16px;">Triage</p>
+                    <p style="margin-bottom: 16px;">Łóżko</p>
+                    <p style="margin-bottom: 16px;">Lekarz</p>
+                    <p style="margin-bottom: 16px;">Pielęgniarka</p>
+                    <p style="margin-bottom: 16px;">Liczba godzin zajętości łóżek</p>
+                </div>
+                <div style="width: 100px;">
+                    <div style="margin-bottom: 10px;"><input type="number" [(ngModel)]="model.G15"></div>
+                    <div style="margin-bottom: 10px;"><input type="number" [(ngModel)]="model.H15"></div>
+                    <div style="margin-bottom: 10px;"><input type="number" [(ngModel)]="model.I15"></div>
+                    <div style="margin-bottom: 10px;"><input type="number" [(ngModel)]="model.J15"></div>
+                    <div style="margin-bottom: 10px;"><input type="number" [(ngModel)]="model.K15"></div>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" style="margin-right: 20px;" (click)="przetworz()">Przetwórz</button>
+
+            <div *ngIf="przetworzone">
+                <h4><b>Średni ważony czas potrzebny każdej jednostce zasobów na obsługę średnio przybyłego pacjenta</b></h4>
+                <div style="display: flex; gap: 30px;">
+                    <div style="width: 250px;">
+                        <p style="margin-bottom: 12px;">Triage</p>
+                        <p style="margin-bottom: 12px;">Łóżko</p>
+                        <p style="margin-bottom: 12px;">Lekarz</p>
+                        <p style="margin-bottom: 12px;">Pielęgniarka</p>
+                        <p style="margin-bottom: 12px;">Liczba godzin zajętości łóżek</p>
+                        <p style="margin-bottom: 12px;">Ograniczenie przyjęć (zajętość łózek) </p>
+                    </div>
+                    <div style="width: 100px;">
+                        <div class="box" style="margin-bottom: 10px;">{{model.G16 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.H16 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.I16 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.J16 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.K16 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.M16 | number : '1.0-2' }}</div>
+                    </div>
+                </div>
+                <h4><b>Wydajność każdego z zasobów</b></h4>
+                <div style="display: flex; gap: 30px;">
+                    <div style="width: 250px;">
+                        <p style="margin-bottom: 12px;">Triage</p>
+                        <p style="margin-bottom: 12px;">Łóżko</p>
+                        <p style="margin-bottom: 12px;">Lekarz</p>
+                        <p style="margin-bottom: 12px;">Pielęgniarka</p>
+                        <p style="margin-bottom: 12px;">Liczba godzin zajętości łóżek</p>
+                        <p style="margin-bottom: 12px;">Ograniczenie przyjęć (zajętość łózek) </p>
+                    </div>
+                    <div style="width: 100px;">
+                        <div class="box" style="margin-bottom: 10px;">{{model.G17 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.H17 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.I17 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.J17 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.K17 | number : '1.0-2' }}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.M17 | number : '1.0-2' }}</div>
+                    </div>
+                </div>
+                <br>
+                <div style="display: flex; gap: 30px;">
+                    <div style="width: 250px;">
+                        <p style="margin-bottom: 12px;">Ograniczeniem wydajności jest: </p>
+                        <p style="margin-bottom: 12px;">Poziom obsługi przepływu</p>
+
+                    </div>
+                    <div style="width: 100px;">
+                        <div class="box" style="margin-bottom: 10px;">{{waskie}}</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.E19 | number : '1.0-2' }} pacj./godz</div>
+
+                    </div>
+                </div>
+                <h4><b>Zajętość zasobów przy danej wydajności</b></h4>
+                <div style="display: flex; gap: 30px;">
+                    <div style="width: 250px;">
+                        <p style="margin-bottom: 12px;">Triage</p>
+                        <p style="margin-bottom: 12px;">Łóżko</p>
+                        <p style="margin-bottom: 12px;">Lekarz</p>
+                        <p style="margin-bottom: 12px;">Pielęgniarka</p>
+                        <p style="margin-bottom: 12px;">Liczba godzin zajętości łóżek</p>
+                        <p style="margin-bottom: 12px;">Ograniczenie przyjęć (zajętość łózek) </p>
+                    </div>
+                    <div style="width: 100px;">
+                        <div class="box" style="margin-bottom: 10px;">{{model.G20 | number : '1.0-2' }}%</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.H20 | number : '1.0-2' }}%</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.I20 | number : '1.0-2' }}%</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.J20 | number : '1.0-2' }}%</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.K20 | number : '1.0-2' }}%</div>
+                        <div class="box" style="margin-bottom: 10px;">{{model.M20 | number : '1.0-2' }}%</div>
+                    </div>
+                </div>
+            </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

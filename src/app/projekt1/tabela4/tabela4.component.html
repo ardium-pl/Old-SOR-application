@@ -1,0 +1,301 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <button mat-raised-button color="primary" (click)="back()">Wróć</button>
+        <h2>Oszacowanie długości cyklu obsługi</h2>
+        <br>
+        <form (ngSubmit)="onSubmit()" (input)="onSubmit()">
+            <div style="display: flex; gap: 100px;">
+            
+                <div style="display: flex; gap: 0px;">
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid">
+                            Godzina
+                        </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid">
+                            {{i}}-{{i+1}}
+                        </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid" style="font-size: 12px;">
+                            Oczek. l. wizyt
+                        </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid">
+                            <input type="number" class="form-control pole" style="background-color: pink;"
+                                id="Ni" [(ngModel)]="model.C[i+33]" name="{{model.C[i+33]}}" title="This is the text of the tooltip">
+                        </div>
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            Wyd./piel.
+                        </div>
+                        <div class="form-group grid" style="text-align: right;">
+                            <b>Pielęgniarki</b>
+                        </div>
+                        <div class="form-group grid">
+                            Liczba
+                        </div>
+                        <div class="form-group grid">
+                            Pielęgn.
+                        </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid">
+                            <input type="number" class="form-control pole" style="background-color: lightyellow;"
+                                id="Ni" [(ngModel)]="model.D[i+33]" name="{{model.D[i+33]}}" title="This is the text of the tooltip">
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            <input type="number" class="form-control pole" style="background-color: pink;"
+                                id="Ni" [(ngModel)]="model.E[5]" name="{{model.E[5]}}" title="This is the text of the tooltip">
+                        </div>
+                        <div class="form-group grid" style="text-align: right;">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            Wydajność
+                        </div>
+                        <div class="form-group grid">
+                            pacj./piel.
+                        </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.E[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            Wyd./lek.
+                        </div>
+                        <div class="form-group grid" style="text-align: right;">
+                            <b>Lekarze</b>
+                        </div>
+                        <div class="form-group grid">
+                            Liczba
+                        </div>
+                        <div class="form-group grid">
+                            Lekarze
+                        </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid">
+                            <input type="number" class="form-control pole" style="background-color: lightyellow;"
+                                id="Pi" [(ngModel)]="model.F[i+33]" name="{{model.F[i+33]}}" title="This is the text of the tooltip">
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+
+                        <div class="form-group grid">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            <input type="number" class="form-control pole" style="background-color: pink;"
+                                id="Ni" [(ngModel)]="model.G[5]" name="{{model.G[5]}}" title="This is the text of the tooltip">
+                        </div>
+                        <div class="form-group grid" style="text-align: right;">
+                            <br>
+                        </div>
+                        <div class="form-group grid">
+                            Wyd.
+                        </div>
+                        <div class="form-group grid">
+                            l. pacj..
+                        </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.G[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Pielęgn. </div>
+                        <div class="form-group grid"> obsługa </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.H[i+33] | number : '1.0-2'}}
+                        </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Śr. oczek. </div>
+                        <div class="form-group grid" style="text-wrap: nowrap;"> Maks. oczek. </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <b>Pielęgniarka</b> </div>
+                        <div class="form-group grid"> Pielęgn. </div>
+                        <div class="form-group grid"> kolejka </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.I[i+33] | number : '1.0-2'}}
+                        </div>
+                        <div class="form-group grid box"> {{model.I[57] | number : '1.0-2'}} </div>
+                        <div class="form-group grid box"> {{model.I[58] | number : '1.0-2'}} </div>
+                        <div class="form-group grid box"> {{model.I[59] | number : '1.0-2'}} </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid" style="text-wrap: nowrap;"> <b>Opóźnienie z niedoboru wydajności</b> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Pielęgn. </div>
+                        <div class="form-group grid"> oczekiw. </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.J[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Lekarz </div>
+                        <div class="form-group grid"> obsługa </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.K[i+33] | number : '1.0-2'}}
+                        </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Śr. oczek. </div>
+                        <div class="form-group grid" style="text-wrap: nowrap;"> Maks. oczek. </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <b>Lekarz</b> </div>
+                        <div class="form-group grid"> Lekarz </div>
+                        <div class="form-group grid"> kolejka </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.L[i+33] | number : '1.0-2'}}
+                        </div>
+                        <div class="form-group grid box"> {{model.L[57] | number : '1.0-2'}} </div>
+                        <div class="form-group grid box"> {{model.L[58] | number : '1.0-2'}} </div>
+                        <div class="form-group grid box"> {{model.L[59] | number : '1.0-2'}} </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Lekarz </div>
+                        <div class="form-group grid"> oczekiw. </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.M[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid" style="text-wrap: nowrap;"> <b>Opóźnienia ze zmienności</b> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Lq </div>
+                        <div class="form-group grid"> Pielęgn.</div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.N[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Wq </div>
+                        <div class="form-group grid"> Pielęgn. </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.O[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid" style="text-align: right;"> Współ. V </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Lq </div>
+                        <div class="form-group grid"> Lekarz </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.P[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid" style="background-color: pink;"> 
+                            <input type="number" class="form-control pole" style="background-color: pink;"
+                            id="Pi" [(ngModel)]="model.Q[5]" name="{{model.Q[5]}}" title="This is the text of the tooltip">
+                         </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Wq </div>
+                        <div class="form-group grid"> Lekarz </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" class="form-group grid box">
+                            {{model.Q[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> Ogółem </div>
+                        <div class="form-group grid"> opóźnienie </div>
+                        <div *ngFor="let item of [].constructor(24); let i = index" style="background-color: rgb({{(model.R[i+33] - minR()) / (maxR()-minR()) * 255}}, {{(1 - (model.R[i+33] - minR()) / (maxR()-minR())) * 255}}, 0);" class="form-group grid box">
+                            {{model.R[i+33] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid" style="text-wrap: nowrap;"> <b>Opóźnienia z jednoczesnego prowadzenia pacjentów</b> </div>
+                        <div class="form-group grid"> Pielęg. K</div>
+                        <div class="form-group grid"> Lekarz K</div>
+                        <div class="form-group grid" > Pielęgn. D</div>
+                        <div class="form-group grid"> Lekarz D</div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> 
+                            <input type="number" class="form-control pole" style="background-color: lightyellow;"
+                            id="Pi" [(ngModel)]="model.U[5]" name="{{model.U[5]}}" title="This is the text of the tooltip">
+                        </div>
+                        <div class="form-group grid"> 
+                            <input type="number" class="form-control pole" style="background-color: lightyellow;"
+                            id="Pi" [(ngModel)]="model.U[6]" name="{{model.U[6]}}" title="This is the text of the tooltip">
+                        </div>
+                        <div class="form-group grid box" style="background-color: green;"> 
+                            {{model.U[7] | number : '1.0-2'}}
+                        </div>
+                        <div class="form-group grid box" style="background-color: green;"> 
+                            {{model.U[8] | number : '1.0-2'}}
+                        </div>
+                    </div>
+                    <div style="width: 80px;">
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid"> <br> </div>
+                        <div class="form-group grid-left"> godz. </div>
+                        <div class="form-group grid-left"> godz. </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

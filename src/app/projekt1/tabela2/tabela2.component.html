@@ -1,0 +1,60 @@
+<div style="margin: 10px;">
+  <div>
+    <br>
+    <button mat-raised-button color="primary" (click)="back()">Wróć</button>
+    <h3>Wpływ niedoboru wydajności na opóźnienia na SOR-ze</h3>
+    <br>
+
+    <form (ngSubmit)="onSubmit()" (input)="onSubmit()">
+
+      <div style="display: flex; gap: 0px;">
+        <div style="width: 80px">
+          <div class="form-group grid" style="text-wrap: nowrap;">Godzina</div>
+          <div *ngFor="let item of [].constructor(6); let i = index" class="form-group grid">
+            {{i+1}}
+          </div>
+          <div class="form-group grid" style="text-wrap: nowrap;">Ogółem</div>
+        </div>
+        <div style="width: 80px">
+          <div class="form-group grid" style="text-wrap: nowrap;">Zapotrzeb.</div>
+          <div *ngFor="let item of [].constructor(6); let i = index" class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;" id="i"
+              [(ngModel)]="model.D[i+17]" name="{{model.D[i+17]}}" title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid" style="text-wrap: nowrap;">{{this.model.D[23] | number : '1.0-2'}}</div>
+        </div>
+        <div style="width: 80px">
+          <div class="form-group grid" style="text-wrap: nowrap;">Wydajność</div>
+          <div *ngFor="let item of [].constructor(6); let i = index" class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;" id="i"
+              [(ngModel)]="model.E[i+17]" name="{{model.E[i+17]}}" title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid" style="text-wrap: nowrap;">{{this.model.E[23] | number : '1.0-2'}}</div>
+        </div>
+        <div style="width: 80px">
+          <div class="form-group grid" style="text-wrap: nowrap;">Obsłużono</div>
+          <div *ngFor="let item of [].constructor(6); let i = index" class="form-group grid box">
+            {{this.model.F[i+17] | number : '1.0-2'}}
+          </div>
+        </div>
+        <div style="width: 80px">
+          <div class="form-group grid" style="text-wrap: nowrap;">Oczekujący</div>
+          <div *ngFor="let item of [].constructor(6); let i = index" class="form-group grid box">
+            {{this.model.G[i+17] | number : '1.0-2'}}
+          </div>
+        </div>
+        <div style="width: 80px"></div>
+        <div style="width: 80px">
+          <div class="form-group grid" style="text-wrap: nowrap;">Z zastosowaniem prostych zasad zarządzania operacyjnego (prawo Little'a) wyznaczamy:</div>
+          <div class="form-group grid" style="text-wrap: nowrap;"><b>·</b> Średnia długość kolejki wynosi:</div>
+          <div class="form-group grid box">{{this.model.I[18] | number : '1.0-2'}}</div>
+          <div class="form-group grid" style="text-wrap: nowrap;"><b>·</b> Maksymalny czas oczekiwania dotyczy ostatniego pacjenta,</div>
+          <div class="form-group grid" style="text-wrap: nowrap;">który przybył w 3. godzinie. Musi on czekać</div>
+          <div class="form-group grid box">{{this.model.I[21] | number : '1.0-2'}}</div>
+          <div class="form-group grid" style="text-wrap: nowrap;"><b>·</b> Średni czas oczekiwania wyniósł:</div>
+          <div class="form-group grid box">{{this.model.I[23] | number : '1.0-2'}}</div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

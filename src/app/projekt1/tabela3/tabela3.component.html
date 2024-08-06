@@ -1,0 +1,154 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <button mat-raised-button color="primary" (click)="back()">Wróć</button>
+        <h3>Uwzględnienie wpływu zmienności na czas pobytu (LOS) pacjentów</h3>
+
+        <br>
+
+        <form (ngSubmit)="onSubmit()" (input)="onSubmit()">
+
+            <div style="display: flex; gap: 0px;">
+                <div style="width: 40px">
+                    <div class="form-group grid" style="text-wrap: nowrap;">Algorytm potrzebuje następujących danych
+                        wejściowych:</div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">Daje to następujące wyniki:</div>
+                </div>
+                <div style="width: 340px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Tempo napływu pacjentów do obsługi
+                    </div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Wydajność każdego obsługującego</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Liczba obsługujących</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Średni czas pomiędzy przybyciem
+                        pacjentów</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Odch. Stand. czasu pomiędzy przyb.
+                        pacj.</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Średni czas obsługi</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Odchylenie standardowe czasu obsługi
+                    </div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Współczynnik zmienności czasu obsługi
+                    </div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Współcz. zm. czasu pomiędzy przyb.
+                        pacj.</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Oczekiwana zajętość obsługującego
+                    </div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">· Czas oczekiwania przed rozpoczęciem
+                        obsługi</div>
+                </div>
+                <div style="width: 60px">
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">λ = </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">μ =</div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">s =</div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">t<span style="font-size: 10px;">a</span> =
+                    </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">σ<span style="font-size: 10px;">a</span> =
+                    </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">t<span style="font-size: 10px;">s</span> =
+                    </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">σ<span style="font-size: 10px;">s</span> =
+                    </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">c<span style="font-size: 10px;">a</span> =
+                    </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">c<span style="font-size: 10px;">s</span> =
+                    </div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">ρ =</div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid" style="text-wrap: nowrap;">W<span style="font-size: 10px;">q</span> =
+                    </div>
+                </div>
+                <div style="width: 80px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <input type="number" class="form-control pole" style="background-color: lightyellow;" id="H[6]"
+                        [(ngModel)]="model.H[6]" name="{{model.H[6]}}" title="This is the text of the tooltip">
+                    <input type="number" class="form-control pole" style="background-color: lightyellow;" id="H[7]"
+                        [(ngModel)]="model.H[7]" name="{{model.H[7]}}" title="This is the text of the tooltip">
+                    <input type="number" class="form-control pole" style="background-color: lightyellow;" id="H[8]"
+                        [(ngModel)]="model.H[8]" name="{{model.H[8]}}" title="This is the text of the tooltip">
+                    <div class="form-group grid-left box" style="text-wrap: nowrap;"> {{model.H[9] | number : '1.0-2'}}</div>
+                    <input type="number" class="form-control pole" style="background-color: lightyellow;" id="H[10]"
+                        [(ngModel)]="model.H[10]" name="{{model.H[10]}}" title="This is the text of the tooltip">
+                    <div class="form-group grid-left box" style="text-wrap: nowrap;"> {{model.H[11] | number : '1.0-2'}}</div>
+                    <input type="number" class="form-control pole" style="background-color: lightyellow;" id="H[12]"
+                        [(ngModel)]="model.H[12]" name="{{model.H[12]}}" title="This is the text of the tooltip">
+                    <div class="form-group grid-left box" style="text-wrap: nowrap;"> {{model.H[13] | number : '1.0-2'}}</div>
+                    <div class="form-group grid-left box" style="text-wrap: nowrap;"> {{model.H[14] | number : '1.0-2'}}</div>
+                    <div class="form-group grid-left box" style="text-wrap: nowrap;"> {{model.H[15] | number : '1.0-2'}}</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left box" style="text-wrap: nowrap; background-color: green;"> {{model.H[18]
+                        | number : '1.0-3'}}</div>
+                </div>
+                <div style="width: 80px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">unit/{{model.L6}}</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">unit/{{model.L6}}</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">{{model.L6}}</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">{{model.L6}}</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">{{model.L6}}</div>
+                    <div class="form-group grid-left " style="text-wrap: nowrap;">{{model.L6}}</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">{{model.L6}}</div>
+                </div>
+                <div style="width: 80px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                </div>
+                <div style="width: 80px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">Jedn. czasu</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><b>Obliczenia pośrednie</b></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">L<span style="font-size: 10px;">q</span> (M/M/s) =</div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">współcz. V =  </div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;">L<span style="font-size: 10px;">q</span> (G/G/s) =</div>
+                </div>
+                <div style="width: 80px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <input type="text" class="form-control pole" style="background-color: lightyellow;" id="L6"
+                        [(ngModel)]="model.L6" name="{{model.L6}}" title="This is the text of the tooltip">
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left box" style="text-wrap: nowrap;">{{model.L[11] | number : '1.0-2'}}</div>
+                        <div class="form-group grid-left box" style="text-wrap: nowrap;">{{model.L[12] | number : '1.0-2'}}</div>
+                        <div class="form-group grid-left box" style="text-wrap: nowrap;">{{model.L[13] | number : '1.0-2'}}</div>
+                </div>
+                <div style="width: 80px">
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                    
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;">jednostek</div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;"><br></div>
+                        <div class="form-group grid-left" style="text-wrap: nowrap;">jednostek</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

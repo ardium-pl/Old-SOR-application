@@ -1,0 +1,30 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Monitoring SOR</h3>
+            <div title="Demonstrator technologii Algorytm detekcji wtargnięcia na teren osób niepożądanych zaburzających przepływ kolejki, np. zachowujących się agresywnie">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px; margin: 10px;">
+            <button mat-raised-button color="primary">Wezwij ochrone</button>
+            <button mat-raised-button color="primary">Wezwij ratownika</button>
+        </div>
+        <div style="display: flex; gap: 20px; margin: 10px;">
+
+                <video autoplay id="my_video_1" style="width: 480px; height: 360px;" (click)="toggleVideo()" #videoPlayer>
+                    <source src="../../assets/monitoring.mp4" type="video/mp4" />
+                    Browser not supported
+                </video>
+
+            <img style="width: 480px; height: 360px;" src="../../assets/monitor1.jpg">
+        </div>
+        <div style="display: flex; gap: 20px; margin: 10px;">
+            
+            <img style="width: 480px; height: 360px;" src="../../assets/monitor2.jpg">
+            <img style="width: 480px; height: 360px;" src="../../assets/monitor3.jpg">
+        </div>
+
+    </div>
+</div>

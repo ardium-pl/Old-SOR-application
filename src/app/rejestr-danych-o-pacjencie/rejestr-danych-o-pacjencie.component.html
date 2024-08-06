@@ -1,0 +1,39 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Rejestr danych o pacjencie</h3>
+            <div title="Demonstrator technologii samoucząca się baza danych zbierająca wszystkie możliwe dane o pacjencie, co w przyszłości pozwoli na integrację i budowę krajowego banku danych stanów nagłych w medycynie (BSN)">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div style="height: 80vh; position:relative;width:100%;">
+                <cdk-virtual-scroll-viewport #virtualScroll itemSize="50" class="example-viewport">
+                    <div *ngFor="let item of [].constructor(krok); let i = index" class="form-group grid">
+                    
+                            <div style="margin-left: auto; margin-right: 0px;"  class="userMsg">
+                                {{pytanieDocelowe[i]}}
+                            </div>
+
+                            <div style="margin-top: 20px;" class="gptMsg" [innerHTML]="odpowiedz[i]">
+
+                            </div>
+                    </div>
+                </cdk-virtual-scroll-viewport>
+
+
+                <div style="position: absolute; bottom: 0; left: 0; width: 98%; margin: 20px;">
+
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" class="form-control" id="pytanie" [(ngModel)]="pytanieWboxie"
+                                    name="{{pytanieWboxie}}" placeholder="Wyszukaj w samouczącej się bazie danych" (click)="wypelnijPytanie()"> 
+                        <button disabled="true" id="guzik" mat-raised-button color="primary" (click)="send()"><mat-icon>send</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

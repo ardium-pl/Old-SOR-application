@@ -1,0 +1,129 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Ergonomia pracy</h3>
+            <div title="Demonstrator technologii poprawy ergonomii pracy, komunikacji oraz automatyzacja procesów dokumentacji medycznej">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>           
+        </div>
+        <mat-button-toggle-group [(ngModel)]="view" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle style="width: 150px;" value="1" color="primary">Listy kontrolne</mat-button-toggle>
+            <mat-button-toggle style="width: 150px;"  value="2" color="primary">Karty informacyjne</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        
+        <div *ngIf="view==1">
+            <br>
+            <h3> Wskaż obszar, dla którego chcesz wyświetlić listę kontrolną </h3>
+            <br>
+            <mat-form-field  style="width:80%;" class="select-input-field">
+                <mat-select (selectionChange)="popup()" [(value)]="wybor" placeholder="Wybierz z listy">
+                  <mat-option *ngFor="let t of wybory" [value]="t.value">{{t.text}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div *ngIf="view==2">
+            <br>
+            <h3> Wybierz z listy kartę informacyjną związaną z punktem kontrolnym </h3>
+            <br>
+            <mat-form-field  style="width:80%;" class="select-input-field">
+                <mat-select  [(value)]="wybor2" placeholder="Wybierz z listy">
+                  <mat-option *ngFor="let t of wybory2" [value]="t.value">{{t.text}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <div *ngIf="wybor2==1">
+                <h3><b> Punkt kontrolny 3. Zapewnić, aby trasy transportowe były równe, nie były śliskie i pozbawione były przeszkód </b></h3>
+                <p><b>DLACZEGO</b></p>
+                <div style="border: 1px solid;">
+                    Transport wewnątrz zakładu jest ważną częścią codziennej pracy. Płynny transportu wewnętrzny z miejsca składowania do miejsc pracy i między stanowiskami pracy jest warunkiem wydajności miejsca pracy. Przenoszenie ładunków na nierównej lub śliskiej podłodze jest częstą przyczyną wypadków. Wypadki takie można wyeliminować, organizując dobre trasy transportowe. Produkty mogą spaść, gdy pracownicy potykają się lub uderzają w przeszkody, powodując w ten sposób straty produkcyjne lub zwiększając koszty naprawy. Stosowanie wózków i regałów na kółkach jest znacznie łatwiejsze, jeśli powierzchnia jest równa i wolna od przeszkód.
+                </div>  
+                <p><b>RYZYKO / OBJAWY</b></p>
+                <div style="border: 1px solid;">
+                    <p><b>•</b> poślizgnięcia, potknięcia lub upadki</p>
+                    <p><b>•</b> naciągnięcie mięśni</p>
+                    <p><b>•</b> nadmierna siła</p>
+                    <p><b>•</b> poważne obrażenia lub wypadek</p>
+                </div>  
+                <p><b>JAK?</b></p>
+                <div style="border: 1px solid;">
+                    <p>a) Usunąć duże skoki wysokości lub inne zagrożenia potknięciem na drogach transportowych.</p>
+                    <p>b) Rutynowo usuwać kałuże wody oleju lub innych śliskich substancji (czyszcząc, kładąc łatwe do czyszczenia nawierzchnie lub używając materiałów chłonnych) i nie przechodzić przez takie kałuże. Używać zakrytych pojemników transportowych, aby uniknąć rozlania.</p>
+                    <p>c) Jeśli nie można natychmiast usunąć skoków wysokości, stosować rampy, wypełnienia lub platformy załadunkowe.</p>
+                    <p>d) Wdrożyć zakaz umieszczania czegokolwiek w ciągach komunikacyjnych i na korytarzach. Najlepiej jest to zrobić poprzez zapewnienie wystarczającej liczby miejsc składowania, regałów i pojemników na odpady oraz poprzez określenie i oznakowanie dróg transportu.</p>
+                    <p>e) Promowanie korzystania z urządzeń transportowych, w tym wózków, ruchomych regałów, wózków i małych pojazdów. Duże koła są lepsze od małych, z wyjątkiem transportu na krótkich dystansach po twardych, równych powierzchniach.</p>
+                </div>  
+                <p><b>WIĘCEJ PODPOWIEDZI</b></p>
+                <div style="border: 1px solid;">
+                    Powierzchnie transportowe mogą być pokryte lub pomalowane powłokami o wysokim współczynniku tarcia, które zmniejszają ryzyko poślizgu, ale nie wpływają na opór toczenia wózków. Takie powierzchnie mogą być jednak trudniejsze do czyszczenia. — Malowanie powierzchni transportowych w jasnych kolorach ułatwia wykrycie zagrożenia poślizgiem. Odpowiednie oświetlenie pomaga identyfikować nierówności. — Nieodpowiednie lub niskotarciowe obuwie może powodować poślizg nawet na dobrych powierzchniach. Jeśli ryzyko poślizgnięcia jest znaczne, należy zapewnić pracownikom odpowiednie obuwie.
+                </div> 
+                <p><b>DO ZAPAMIĘTANIA </b></p>
+                <div style="border: 1px solid;">
+                    Czyszczenie dróg transportowych jest niskokosztowym rozwiązaniem potencjalnych problemów. Czyszczenie powinno być wykonywane rutynowo codziennie
+                </div> 
+
+                <div style="display: flex; gap: 10px;  margin-top: 10px;">
+                    <button mat-raised-button color="primary">Zapisz</button>
+                    <button mat-raised-button color="primary">Wyślij</button>
+                    <button mat-raised-button color="primary">Drukuj</button>
+                    <button mat-raised-button  (click)="close()" color="primary">Zamknij</button>
+                </div>
+            </div>
+            <div *ngIf="wybor2==2">
+                <h3><b> Punkt kontrolny 56. Ustalać grafiki pracy w taki sposób, aby uniknąć nadmiernych godzin pracy i zapewnić wystarczającą ilość okresów odpoczynku i krótkich przerw.</b></h3>
+                <p><b>DLACZEGO</b></p>
+                <div style="border: 1px solid;">
+                Niewłaściwe grafiki lub zbyt długie godziny pracy mogą powodować nadmierne zmęczenie. Ponieważ praca w służbie zdrowia nie może być łatwo przerwana, dobre planowanie grafików pracy jest bardzo ważne, aby zapobiec zaburzeniom związanym ze zmęczeniem, takim jak choroby układu mięśniowoszkieletowego, układu krążenia lub choroby psychiczne. Aby uniknąć takiej sytuacji, ważne jest, aby ustalić grafiki pracy w taki sposób, aby zapewnić wystarczające okresy odpoczynku między zmianami lub przerwy w regularnych odstępach czasu. Niewystarczające okresy odpoczynku lub zbyt długie godziny pracy mogą zwiększać ryzyko wypadków. Jednocześnie obniżona zostanie wydajność i jakość pracy.
+                <br><br>Nadmiernemu zmęczeniu można zapobiec, robiąc częste krótkie przerwy w pracy, w odstępach kilkugodzinnych. Ponadto należy odpowiednio wykorzystać do regeneracji dni wolne od pracy w weekendy i płatne urlopy roczne.
+               </div>  
+                <p><b>RYZYKO / OBJAWY</b></p>
+                <div style="border: 1px solid;">
+                    <p><b>•</b> nadmierne zmęczenie</p>
+                    <p><b>•</b> choroby narządu ruchu</p>
+                    <p><b>•</b> zaburzenia układu krążenia</p>
+                    <p><b>•</b> problemy psychospołeczne</p>
+                    <p><b>•</b> wypadki</p>
+                    <p><b>•</b> nieefektywność pracy</p>
+                </div>  
+                <p><b>JAK?</b></p>
+                <div style="border: 1px solid;">
+                    <p>a) Ustalenie możliwości poprawy organizacji czasu pracy. Pomocne jest organizowanie dyskusji w grupach z udziałem pracowników lub ich przedstawicieli.</p>
+                    <p>b) Istnieją różne sposoby zmiany organizacji czasu pracy. System pracy należy odpowiednio zorganizować, biorąc pod uwagę następujące zdarzenia:</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> zmiana czasu rozpoczęcia/zakończenia, wystarczająca ilość czasu między zmianami</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> uwzględnianie przerw na odpoczynek</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span>  udzielanie regularnych urlopów</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span>  elastyczny czas pracy lub zmienna długość zmiany</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> odpowiednie systemy pracy zmianowej,</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> praca w niepełnym wymiarze godzin</p>
+                    <p>    <span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> zatrudnienie dwóch lub więcej osób w niepełnym wymiarze godzin na jednym etacie</p>
+                    <p>c) Należy porównać możliwe opcje, godząc wymagania miejsca pracy z preferencjami pracowników. Następnie uzgodnić konkretne plany.</p>
+                    <p>d) Przy wprowadzaniu nowych ustaleń konieczne jest uzyskanie informacji zwrotnej od pracowników. Niezbędne jest oparte na rzetelnych informacjach porozumienie między pracownikami i kierownictwem. Negocjacje przed wdrożeniem są zawsze niezbędne i z reguły konieczne są dalsze dostosowania.</p>
+                 </div>  
+                <p><b>WIĘCEJ PODPOWIEDZI</b></p>
+                <div style="border: 1px solid;">
+                    <p><span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span>Należy odpowiednio uwzględnić zarówno wymagania miejsca pracy (czas pracy, poziom obsady i plany opieki zdrowotnej), jak i preferencje pracowników (zmiana godzin pracy, dni wolne od pracy, weekendy, obowiązki rodzinne). Trzeba to dokładnie zaplanować.</p>
+                    <p><span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> Często przydatne jest utworzenie zespołu ds. planowania z udziałem zainteresowanych pracowników. Przedstawione warianty praktyczne można wykorzystać jako podstawę do dalszych konsultacji.</p>
+                    <p><span style="margin-left: 10px; margin-right: 10px;"><b>•</b></span> Zazwyczaj lepiej jest wprowadzić nowe ustalenia dotyczące czasu pracy na okres próbny. Wspólna ocena zarówno przez kierownictwo, jak i pracowników powinna zostać przeprowadzona przed ustaleniem ostatecznej zmiany harmonogramów pracy.</p>
+                </div> 
+                <p><b>DO ZAPAMIĘTANIA </b></p>
+                <div style="border: 1px solid;">
+                    Nieodpowiednie grafiki pracy poważnie obciążają życie zawodowe. Konsultacje z zainteresowanymi pracownikami dają lepsze wyniki, pozwalając pogodzić wymagania miejsca pracy z preferencjami pracowników
+                </div> 
+
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button mat-raised-button color="primary">Zapisz</button>
+                    <button mat-raised-button color="primary">Wyślij</button>
+                    <button mat-raised-button color="primary">Drukuj</button>
+                    <button mat-raised-button (click)="close()" color="primary">Zamknij</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

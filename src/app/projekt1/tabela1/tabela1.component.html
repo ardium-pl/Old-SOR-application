@@ -1,0 +1,620 @@
+<div style="margin: 10px;">
+  <div>
+    <br>
+    <button mat-raised-button color="primary" (click)="back()">Wróć</button>
+    <h2>Obliczenia statyczne wąskich gardeł</h2>
+    <br>
+    <form (ngSubmit)="onSubmit()" (input)="onSubmit()">
+      <div style="display: flex; gap: 50px;">
+        <div style="width: 100px;"></div>
+        <div style="width: 100px;"></div>
+        <div style="width: 170px;"></div>
+        <div style="width: 100px;"><b>Zasoby</b></div>
+        <div style="width: 20px;"></div>
+        <div style="width: 200px;"><b>Ograniczenia przyjęć</b></div>
+      </div>
+      <div style="display: flex; gap: 0px;">
+        <div style="width: 250px;">
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid-left">
+            <b>Typ pacjenta</b>
+          </div>
+          <div class="form-group grid-left">
+            Triage
+          </div>
+          <div class="form-group grid-left">
+            1. Resuscytacja
+          </div>
+          <div class="form-group grid-left">
+            2. Stan zagrożenia życia  
+          </div>
+          <div class="form-group grid-left">
+            3. Pilny przypadek ostry
+          </div>
+          <div class="form-group grid-left">
+            4. Pilny przypadek nieostry
+          </div>
+          <div class="form-group grid-left">
+            5. Niepilny
+          </div>
+          <div class="form-group grid-left">
+            Obserwacja
+          </div>
+          <div class="form-group grid-left">
+            Oczek. na przyj. na oddział leczniczy 
+          </div>
+          <div class="form-group grid-left">
+            Liczba zasobów
+          </div>
+          <div class="form-group grid-left">
+            Średni ważony czas na pacjenta
+          </div>
+          <div class="form-group grid-left">
+            Wydajność (napływ pacj./godz.)
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid-left">
+            Zajętość przy danej wydajności
+          </div>
+          <br>
+          <br>
+          <div class="form-group grid-left" style="display: flex;" >
+            <div>
+            Wąskie gardło</div>
+            <div>
+              <div style="color: rgb(0, 190, 0); margin-left: 10px;" class="box">
+                  {{waskie}} </div>
+                </div>
+          </div>
+          <div class="form-group grid-left" style="display: flex;" >
+            <div style="text-wrap: nowrap;">
+              Wydajn. wąskiego gardła</div>
+            <div style="margin-left: 5px; background-color: rgb(116, 196, 116); " class="box">
+              {{model.E19 | number : '1.0-2' }}
+            </div> <div style="margin-left: 5px;">pacj./godz.</div>
+          </div>
+        </div> 
+        <div style="width: 100px;">
+          <div class="form-group grid">
+            Proc.
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            pacjentów
+          </div>
+          <div class="form-group grid">
+            <input type="number"  class="form-control pole-long" style="background-color: pink;" id="F7"  [(ngModel)]="model.F7"  name="F7"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number"  class="form-control pole-long" style="background-color: pink;" id="F8"  [(ngModel)]="model.F8" name="F8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole-long" style="background-color: pink;" id="F9" [(ngModel)]="model.F9" name="F9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole-long" style="background-color: pink;" id="F10" [(ngModel)]="model.F10" name="F10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole-long" style="background-color: pink;" id="F11" [(ngModel)]="model.F11" name="F11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole-long" style="background-color: pink;" id="F12" [(ngModel)]="model.F12" name="F12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole-long" style="background-color: pink;" id="F13" [(ngModel)]="model.F13" name="F13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole-long" style="background-color: pink;" id="F14" [(ngModel)]="model.F14" name="F14"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid" style="color:red;">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+        </div>
+
+        <div style="width: 80px;">
+          <div class="form-group grid">
+            Triage
+          </div>
+          <div class="form-group grid">
+            Czas/pacjenta
+          </div>
+          <div class="form-group grid">
+            min
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G7" [(ngModel)]="model.G7" name="G7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G8" [(ngModel)]="model.G8" name="G8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G9" [(ngModel)]="model.G9" name="G9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G10" [(ngModel)]="model.G10" name="G10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G11" [(ngModel)]="model.G11" name="G11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G12" [(ngModel)]="model.G12" name="G12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G13" [(ngModel)]="model.G13" name="G13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="G14" [(ngModel)]="model.G14" name="G14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;" id="G15" [(ngModel)]="model.G15" name="G15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.G16 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid box">
+            {{model.G17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.G18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.G20 | number : '1.0-2' }}%
+          </div>
+        </div>
+        <div style="width: 80px;">
+          <div class="form-group grid">
+            Łóżko
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            godz.
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H7" [(ngModel)]="model.H7" name="H7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H8" [(ngModel)]="model.H8" name="H8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H9" [(ngModel)]="model.H9" name="H9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H10" [(ngModel)]="model.H10" name="H10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H11" [(ngModel)]="model.H11" name="H11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H12" [(ngModel)]="model.H12" name="H12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H13" [(ngModel)]="model.H13" name="H13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="H14" [(ngModel)]="model.H14" name="H14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;" id="H15" [(ngModel)]="model.H15" name="H15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.H16 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid box">
+            {{model.H17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.H18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.H20 | number : '1.0-2' }}%
+          </div>
+        </div>
+        <div style="width: 80px;">
+          <div class="form-group grid">
+            Lekarz
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            min
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I7" [(ngModel)]="model.I7" name="I7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I8" [(ngModel)]="model.I8" name="I8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I9" [(ngModel)]="model.I9" name="I9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I10" [(ngModel)]="model.I10" name="I10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I11" [(ngModel)]="model.I11" name="I11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I12" [(ngModel)]="model.I12" name="I12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I13" [(ngModel)]="model.I13" name="I13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="I14" [(ngModel)]="model.I14" name="I14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;" id="I15" [(ngModel)]="model.I15" name="I15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.I16 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid box">
+            {{model.I17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.I18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.I20 | number : '1.0-2' }}%
+          </div>
+        </div>
+        <div style="width: 80px;">
+          <div class="form-group grid">
+            Pielęgn.
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            min
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J7" [(ngModel)]="model.J7" name="J7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J8" [(ngModel)]="model.J8" name="J8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J9" [(ngModel)]="model.J9" name="J9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J10" [(ngModel)]="model.J10" name="J10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" style="background-color: pink;" id="J11" [(ngModel)]="model.J11" name="J11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J12" [(ngModel)]="model.J12" name="J12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J13" [(ngModel)]="model.J13" name="J13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="J14" [(ngModel)]="model.J14" name="J14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;" id="J15" [(ngModel)]="model.J15" name="J15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.J16 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid box">
+            {{model.J17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.J18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.J20 | number : '1.0-2' }}%
+          </div>
+        </div>
+        <div style="width: 80px;">
+          <div class="form-group grid" style="font-size: 12px;">
+            Łóżko obserw.
+          </div>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid">
+            godz.
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="K7" [(ngModel)]="model.K7" name="K7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="K8" [(ngModel)]="model.K8" name="K8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;" id="K9" [(ngModel)]="model.K9" name="K9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;"  id="K10" [(ngModel)]="model.K10" name="K10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;"  id="K11" [(ngModel)]="model.K11" name="K11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;"  id="K12" [(ngModel)]="model.K12" name="K12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;"  id="K13" [(ngModel)]="model.K13" name="K13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;"  id="K14" [(ngModel)]="model.K14" name="K14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightyellow;"  id="K15" [(ngModel)]="model.K15" name="K15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.K16 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid box">
+            {{model.K17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.K18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.K20 | number : '1.0-2' }}%
+          </div>
+        </div>
+
+        <div style="width: 80px;">
+          <div class="form-group grid" style="font-size: 12px;">
+            Łóżko oczek.
+          </div>
+          <div class="form-group grid" style="font-size: 10px;">
+            na przyj. do szpit.
+          </div>
+          <div class="form-group grid">
+            godz.
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M7" style="background-color: lightgray;"  [(ngModel)]="model.M7" name="M7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M8" style="background-color: lightgray;"  [(ngModel)]="model.M8" name="M8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M9" style="background-color: lightgray;"  [(ngModel)]="model.M9" name="M9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M10" style="background-color: lightgray;"  [(ngModel)]="model.M10" name="M10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M11" style="background-color: lightgray;"  [(ngModel)]="model.M11" name="M11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M12"  style="background-color: lightgray;" [(ngModel)]="model.M12" name="M12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M13" style="background-color: lightgray;"  [(ngModel)]="model.M13" name="M13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M14" style="background-color: pink;"  [(ngModel)]="model.M14" name="M14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" id="M15" style="background-color: lightyellow;"  [(ngModel)]="model.M15" name="M15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.M16 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid box">
+            {{model.M17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.M18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.M20 | number : '1.0-2' }}%
+          </div>
+        </div>
+
+        <div style="width: 80px;">
+          <div class="form-group grid">
+            Wydajność
+          </div>
+          <div class="form-group grid">
+            przyjmowania
+          </div>
+          <div class="form-group grid">
+            pacj./godz.
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;" id="N7" [(ngModel)]="model.N7" name="N7"
+              title="Szczegółowy opis pola\ntest">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N8" [(ngModel)]="model.N8" name="N8"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N9" [(ngModel)]="model.N9" name="N9"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N10" [(ngModel)]="model.N10" name="N10"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N11" [(ngModel)]="model.N11" name="N11"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N12" [(ngModel)]="model.N12" name="N12"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N13" [(ngModel)]="model.N13" name="N13"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: pink;"  id="N14" [(ngModel)]="model.N14" name="N14"
+              title="This is the text of the tooltip">
+          </div>
+
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N15" [(ngModel)]="model.N15" name="N15"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid">
+            <input type="number" class="form-control pole" style="background-color: lightgray;"  id="N16" [(ngModel)]="model.N16" name="N16"
+              title="This is the text of the tooltip">
+          </div>
+          <div class="form-group grid box">
+            {{model.N17 | number : '1.0-2' }}
+          </div>
+          <div class="form-group grid" style="color:red;" *ngIf="model.N18 == 0; else elseBlock">
+            *****
+          </div>
+          <ng-template #elseBlock><br></ng-template>
+          <div class="form-group grid">
+            <br>
+          </div>
+          <div class="form-group grid box">
+            {{model.N20 | number : '1.0-2' }}%
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

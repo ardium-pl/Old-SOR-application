@@ -1,0 +1,98 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Weryfikacja stanu pacjenta</h3>
+            <div
+                title="Demonstrator technologii algorytmu postępowania w celu weryfikacji, czy pacjent nadaje się do dalszego procesowania lub jego obecność nie wymaga nagłej pomocy medycznej">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <div>
+                <div>
+                    <form (ngSubmit)="pobierz()">
+
+                        <div class="form-group" style="width: 200px;">
+                            <label for="pesel">PESEL</label>
+                            <input type="number" class="form-control" id="pesel" [(ngModel)]="model.pesel"
+                                (click)="wstaw()" name="{{model.pesel}}" title="This is the text of the tooltip">
+                        </div>
+                        <button mat-raised-button color="primary" type="submit">Pobierz dane</button>
+
+                    </form>
+                </div>
+
+
+                <div *ngIf="pobrano">
+                    <h3> Dane Pacjenta:</h3>
+                    <div style="display: flex;">
+                        <div style="width: 200px; line-height: 34px;">
+                            <div><b> Identyfikator: </b></div>
+                            <div><b> Pesel: </b></div>
+                            <div><b> Imię: </b></div>
+                            <div><b> Nazwisko: </b></div>
+                            <div><b> Data Urodzenia: </b></div>
+                        </div>
+                        <div style="width: 120px; line-height: 34px;">
+                            <input disabled="true" type="number" class="form-control" id="id" [(ngModel)]="model.id"
+                                name="{{model.id}}">
+                            <input disabled="true" type="number" class="form-control" id="pesel"
+                                [(ngModel)]="model.pesel" name="{{model.pesel}}">
+                            <input disabled="true" type="text" class="form-control" id="imie" [(ngModel)]="model.imie"
+                                name="{{model.imie}}">
+                            <input disabled="true" type="text" class="form-control" id="nazwisko"
+                                [(ngModel)]="model.nazwisko" name="{{model.nazwisko}}">
+                            <input disabled="true" type="text" class="form-control" id="dataUrodzenia"
+                                [(ngModel)]="model.dataUrodzenia.toISOString().split('T')[0]"
+                                name="{{model.dataUrodzenia}}">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px; margin-bottom: 10px;">
+                        <button mat-raised-button color="primary" style="margin-right: 10px;"
+                            (click)="przetworz()">Przetwórz</button>
+                        <button mat-raised-button color="primary" (click)="wyniki()">Pokaż wyniki badań</button>
+                        <button mat-raised-button color="primary" style="margin-left: 10px;"
+                            (click)="setKrok(2)">Edytuj</button>
+                    </div>
+                    <div *ngIf="krok == 2">
+                        <div><b>Wprowadź dodatkowe informacje o stanie pacjenta:</b></div>
+                        <div><textarea [(ngModel)]="text1" style="width:380px; height: 100px;"></textarea></div>
+                        <div><b>Przewidywane zaangażowanie dodatkowych zasobów:</b></div>
+                        <div><mat-checkbox [(ngModel)]="cb1" color="primary">Lekarz</mat-checkbox></div>
+                        <div><mat-checkbox [(ngModel)]="cb2" color="primary">Pielęgniarka</mat-checkbox></div>
+                        <div><mat-checkbox [(ngModel)]="cb3" color="primary">Łóżko</mat-checkbox></div>
+                        <div><mat-checkbox [(ngModel)]="cb4" color="primary">Łóżko obserwacyjne</mat-checkbox></div>
+                        <div><mat-checkbox [(ngModel)]="inne" color="primary">Inne</mat-checkbox></div>
+                        <div *ngIf="inne">
+                            <div><b>Jakie?</b></div>
+                            <input [(ngModel)]="text2" style="width: 380px;" type="text"> 
+                        </div>
+                        <button mat-raised-button color="primary" style="margin-top: 10px;"
+                            (click)="setKrok(1)">Zapisz zmiany</button>
+                    </div>
+
+                </div>
+            </div>
+            <div>
+                <img src="../../assets/grafika1.png" width="50%">
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>

@@ -1,0 +1,231 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Panel dla pacjenta</h3>
+            <div title="Demonstrator technologii algorytmu z wykorzystaniem sztucznej inteligencji wyboru odpowiedzi/porady dla pacjenta na podstawie zbioru danych pacjenta, aktualnego stanu kolejki SOR, priorytetu pacjenta, aktualnego stanu psychofizycznego pacjenta">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div *ngIf="krok == 0">
+                <form>
+                    <h3> Twoje dane:</h3>
+                    <div style="display: flex;">
+                        <div style="width: 200px; line-height: 46px;">
+                            <div><b> Pesel: </b></div>
+                            <div><b> Imię: </b></div>
+                            <div><b> Nazwisko: </b></div>
+                            <div><b> Data Urodzenia: </b></div>
+                        </div>
+                        <div style="width: 150px; line-height: 34px;">
+                            <input style="margin: 10px;" type="number" class="form-control" id="pesel" [(ngModel)]="pacjent.pesel"
+                                name="{{pacjent.pesel}}">
+                            <input style="margin: 10px;"  type="text" class="form-control" id="imie" [(ngModel)]="pacjent.imie"
+                                name="{{pacjent.imie}}">
+                            <input style="margin: 10px;"  type="text" class="form-control" id="nazwisko" [(ngModel)]="pacjent.nazwisko"
+                                name="{{pacjent.nazwisko}}">
+                            <input style="margin: 10px;"  type="date" class="form-control" id="dataUrodzenia"
+                                [(ngModel)]="pacjent.dataUrodzenia.toISOString().split('T')[0]"
+                                name="{{pacjent.dataUrodzenia}}">
+                        </div>
+                    </div>
+                    <button style="margin-top: 20px; margin-left: 290px;" mat-raised-button color="primary"
+                        (click)="setKrok(1)">Dalej</button>
+                </form>
+            </div>
+            <div *ngIf="krok == 1">
+
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(0)">Wstecz</button>
+
+                    <br>
+                    <h3>Propozycje najczęstszych problemów:</h3>
+                    <br>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <button mat-raised-button color="primary">Krwotok</button>
+                        <button mat-raised-button color="primary" (click)="setKrok(4)">Objawy infekcji</button>
+                        <button mat-raised-button color="primary">Duszność</button>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button mat-raised-button color="primary" (click)="setKrok(2)">Ból</button>
+                        <button mat-raised-button color="primary">Zaburzenia równowagi</button>
+                        <button mat-raised-button color="primary">Inne</button>
+                    </div>
+
+            </div>
+            <div *ngIf="krok == 2">
+
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(1)">Wstecz</button>
+                <div>Jak bardzo Cię boli w skali 1-10?</div>
+                <div style="display: flex;">
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">1</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">2</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">3</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">4</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">5</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">6</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">7</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">8</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">9</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(3)">10</button>
+                </div>
+            </div>
+            <div *ngIf="krok == 3">
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(2)">Wstecz</button>
+
+                <div style="display: flex;">
+                    <div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Prawy górny kwadrant brzucha</button></div>
+                        <div><br></div>
+                        <div><button style="float: right;"  mat-raised-button color="primary" (click)="setKrok(5)">Prawe przedramie</button></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Prawy dolny kwadrant brzucha</button></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+
+                        <div><button style="float: right;" mat-raised-button color="primary" (click)="setKrok(5)">Podudzie prawe</button></div>
+                    </div>
+                    <div>
+                        <img src="../../assets/schemat-small-l.png">
+                    </div>
+                    <div>
+                        <div><br></div>
+                        <div><br></div>     
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Głowa</button></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Okolica zamostkowa</button></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Lewy górny kwadrant brzucha</button></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Lewe przedramie</button></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Lewy dolny kwadrant brzucha</button></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Podudzie lewe</button></div>
+                    </div>
+                    <div>
+                        <img src="../../assets/schemat-small-p.png">
+                    </div>
+                    <div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Okolica kręgosłupa piersiowego</button></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><br></div>
+                        <div><button mat-raised-button color="primary" (click)="setKrok(5)">Okolica kręgosłupa lędźwiowego</button></div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="krok == 4">
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(1)">Wstecz</button>
+                <div>Czy podejrzewasz u siebie Covid-19?</div>
+                <div style="display: flex; gap: 20px;">
+                    <button mat-flat-button color="primary" (click)="setKrok(6)">Tak</button>
+                    <button mat-flat-button color="primary" (click)="setKrok(6)">Nie</button>
+                </div>
+            </div>
+
+            <div *ngIf="krok == 5">
+                <div style="display: flex; gap: 10px;">
+                    <div >
+                        <div style="line-height: 35px;">Masz kolor:</div>
+                        <div style="line-height: 35px;">Przewidywany czas oczekiwania:</div>
+                        <div style="line-height: 35px;">Przed Tobą w kolejce jest:</div>
+                    </div>
+                    <div>
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="kolor" [(ngModel)]="kolor" name="kolor">
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="czasOczekiwania" [(ngModel)]="czasOczekiwania" name="czasOczekiwania">
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="wKolejce" [(ngModel)]="wKolejce" name="wKolejce">
+                    </div>
+                </div>
+
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                (click)="setKrok(0)">Zakończ</button>
+            </div>
+
+            <div *ngIf="krok == 6">
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(4)">Wstecz</button>
+                <div>Jaki rodzaj infekcji występuje?</div>
+                <div style="margin: 10px;">
+                    <div style="margin: 10px;"><button mat-flat-button color="primary" (click)="setKrok(7)">Infekcja dróg oddechowych (np. kaszel, katar, bół gardła)</button></div>
+                    <div style="margin: 10px;"><button mat-flat-button color="primary" (click)="setKrok(7)">Infekcja przewodu pokarmowego (np. wymioty, biegunka)</button></div>
+                </div>
+            </div>
+            <div *ngIf="krok == 7">
+                <div style="display: flex; gap: 10px;">
+                    <div >
+                        <div style="line-height: 35px;">Masz kolor:</div>
+                        <div style="line-height: 35px;">Przewidywany czas oczekiwania:</div>
+                        <div style="line-height: 35px;">Przed Tobą w kolejce jest:</div>
+                    </div>
+                    <div>
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="kolor" [(ngModel)]="kolor" name="kolor">
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="czasOczekiwania" [(ngModel)]="czasOczekiwania" name="czasOczekiwania">
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="wKolejce" [(ngModel)]="wKolejce" name="wKolejce">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 50px; margin-top: 30px;">
+                    <div>
+                        <br>
+                        <div>1. Pamiętaj o założeniu maseczki.</div>
+                        <br>
+                        <div>2. Udaj się w miejsce pokazane na mapie</div>
+                    </div>
+                    <div>
+                        <img src="../../assets/mapa.png">
+                    </div>
+                </div>
+
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                (click)="setKrok(0)">Zakończ</button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

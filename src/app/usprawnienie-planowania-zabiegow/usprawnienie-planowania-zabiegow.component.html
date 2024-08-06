@@ -1,0 +1,45 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Usprawnienie planowania zabiegów</h3>
+            <div title="Demonstrator technologii algorytmu usprawnienia procesu planowania zabiegów z uwzględnieniem bieżących i zaplanowanych potrzeb oraz wykorzystaniem sztucznej inteligencji">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div *ngIf="krok == 1">
+                <button mat-raised-button color="primary" (click)="setKrok(2)">Wykorzystanie zasobów</button>
+                <div style="display: flex; gap: 10px;">
+                    <div style="line-height: 35px; margin-bottom: 20px;">Przewidywany czas do osiągnięcia krytycznego poziomu wykorzystania zasobów (85%):</div>
+                    <input disabled="true" type="text" class="form-control" style="width: 100px; color: plum;" id="przewidywanyCzas" [(ngModel)]="przewidywanyCzas" name="przewidywanyCzas">
+                </div>
+                <input disabled="true" type="text" class="form-control" style="width: 300px; color: red;" id="komunikat1" [(ngModel)]="komunikat1" name="komunikat1">
+            </div>
+            <div *ngIf="krok == 2">
+                <div style="display: flex; gap: 10px;">
+                    <div >
+                        <div style="line-height: 35px;">Lekarze</div>
+                        <div style="line-height: 35px;">Pielęgniarki/ratownicy</div>
+                        <div style="line-height: 35px;">Łóżka</div>
+                    </div>
+                    <div>
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="lekarze" [(ngModel)]="lekarze" name="lekarze">
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: plum;" id="pielegniarki" [(ngModel)]="pielegniarki" name="pielegniarki">
+                        <input disabled="true" type="text" class="form-control" style="width: 250px; color: red;" id="lozka" [(ngModel)]="lozka" name="lozka">
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="krok == 3">
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

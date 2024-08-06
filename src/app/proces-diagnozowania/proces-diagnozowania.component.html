@@ -1,0 +1,258 @@
+<div style="margin: 10px;">
+    <div>
+        <br>
+        <div style="display: flex; gap: 10px">
+            <h3>Proces diagnozowania </h3>
+            <div title="Demonstrator technologii usprawnienia procesu diagnozowania">
+                <mat-icon style="margin-top: 25px;">info</mat-icon>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div *ngIf="krok == 0">
+
+                <h2>Lista pacjentów</h2>
+                <table mat-table [dataSource]="dataSource">
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+
+                    <tr mat-row (click)="idz(myRowData)" *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> Id </th>
+                        <td mat-cell *matCellDef="let pacjent"> {{pacjent.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="pesel">
+                        <th mat-header-cell *matHeaderCellDef> Pesel </th>
+                        <td mat-cell *matCellDef="let pacjent"> {{pacjent.pesel}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="imie">
+                        <th mat-header-cell *matHeaderCellDef> Imię </th>
+                        <td mat-cell *matCellDef="let pacjent"> {{pacjent.imie}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="nazwisko">
+                        <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+                        <td mat-cell *matCellDef="let pacjent"> {{pacjent.nazwisko}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="dataUrodzenia">
+                        <th mat-header-cell *matHeaderCellDef> Data Urodzenia </th>
+                        <td mat-cell *matCellDef="let pacjent"> {{pacjent.dataUrodzenia.toISOString().split("T")[0]}}
+                        </td>
+                    </ng-container>
+                </table>
+
+            </div>
+            <div *ngIf="krok == 1">
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(0)">Wstecz</button>
+                <br>
+
+                <div (click)="rozwin(1)" style="cursor: pointer;margin: 10px"><b>Aktualne zgłaszane dolegliwości</b>
+                </div>
+                <div *ngIf="czyRozwiniete1">
+                    <div *ngIf="wybrany.id == 1; else b12">
+                        <div> - Ból głowy 7/10</div>
+                        <div> - Zaburzenia równowagi</div>
+                    </div>
+                    <ng-template #b12>
+                        <div *ngIf="wybrany.id == 2; else b13">
+                            <div> - Duszność spoczynkowa</div>
+                            <div> - Rozlany, gniotący ból za mostkiem, promieniujący do nadbrzusza lewego (8/10)</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #b13>
+                        <div *ngIf="wybrany.id == 3; else b14">
+                            <div> - Ból okolicy lędźwiowej pleców po prawej stronie (8/10), promieniujący do nadbrzusza
+                                prawego</div>
+                            <div> - Nudności i wymioty</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #b14>
+                        <div *ngIf="wybrany.id == 4; else b15">
+                            <div> - Rwący ból w stawie kolanowym 9/10, uraz podczas gry w piłkę nożną, upadek w
+                                wymuszonej pozycji</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #b15>
+                        <div>
+                            <div> - Ból głowy pulsujący, zlokalizowany w okolicy potylicznej 7/10</div>
+                            <div> - pacjent zgłasza zaburzenia widzenia, opisując je jako „mroczki przed oczami”</div>
+                        </div>
+                    </ng-template>
+                </div>
+                <div (click)="rozwin(2)" style="cursor: pointer;margin: 10px"><b>Historia Pacjenta</b></div>
+                <div *ngIf="czyRozwiniete2">
+                    <div *ngIf="wybrany.id == 1; else a12">
+                        <div> - Ostatnia wizyta na SOR</div>
+                        <div style="margin-left: 20px;">
+                            <div>- data: 15.10.2022</div>
+                            <div>- powód: ostre zapalenie wyrostka robaczkowego</div>
+                        </div>
+                        <div> - Ostatnia hospitalizacja</div>
+                        <div style="margin-left: 20px;">
+                            <div>- data: 15.10.2022 - 22.10.2022</div>
+                            <div>- powód: apendektomia, obserwacja pooperacyjna</div>
+                        </div>
+                        <div> - Zdiagnozowane choroby</div>
+                        <div style="margin-left: 20px;">
+                            <div>- nadcisnienie tętnicze</div>
+                            <div>- cukrzyca typu II</div>
+                        </div>
+                    </div>
+                    <ng-template #a12>
+                        <div *ngIf="wybrany.id == 2; else a13">
+                            <div> - Ostatnia wizyta na SOR</div>
+                            <div style="margin-left: 20px;">
+                                <div>- data: 7.12.2022</div>
+                                <div>- powód: ostre zapalenie trzustki</div>
+                            </div>
+                            <div> - Ostatnia hospitalizacja</div>
+                            <div style="margin-left: 20px;">
+                                <div>- data: 8.02.2023 - 12.02.2023</div>
+                                <div>- powód: alloplastyka stawu kolanowego, obserwacja pooperacyjna</div>
+                            </div>
+                            <div> - Zdiagnozowane choroby</div>
+                            <div style="margin-left: 20px;">
+                                <div>- nadcisnienie tętnicze</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #a13>
+                        <div *ngIf="wybrany.id == 3; else a14">
+                            <div> - Ostatnia wizyta na SOR</div>
+                            <div style="margin-left: 20px;">
+                                <div>- brak danych</div>
+                            </div>
+                            <div> - Ostatnia hospitalizacja</div>
+                            <div style="margin-left: 20px;">
+                                <div>- data: 10.10.2019 - 15.10.2019</div>
+                                <div>- powód: diagnostyka przyczyn hiperkortyzolemii</div>
+                            </div>
+                            <div> - Zdiagnozowane choroby</div>
+                            <div style="margin-left: 20px;">
+                                <div>- zespół Cushinga</div>
+                                <div>- cukrzyca typu II</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #a14>
+                        <div *ngIf="wybrany.id == 4; else a15">
+                            <div> - Ostatnia wizyta na SOR</div>
+                            <div style="margin-left: 20px;">
+                                <div>- data: 15.10.2022</div>
+                                <div>- powód: ostre zapalenie wyrostka robaczkowego</div>
+                            </div>
+                            <div> - Ostatnia hospitalizacja</div>
+                            <div style="margin-left: 20px;">
+                                <div>- brak danych</div>
+                            </div>
+                            <div> - Zdiagnozowane choroby</div>
+                            <div style="margin-left: 20px;">
+                                <div>- pacjent nieleczony przewlekle</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #a15>
+                        <div>
+                            <div> - Ostatnia wizyta na SOR</div>
+                            <div style="margin-left: 20px;">
+                                <div>- data: 16.08.2018</div>
+                                <div>- powód: złamanie okołoprotezowe proksymalnej części trzonu kości udowej prawej
+                                    kończyny
+                                    dolnej, pacjentka po endoprotezoplastyce prawego stawu biodrowego</div>
+                            </div>
+                            <div> - Ostatnia hospitalizacja</div>
+                            <div style="margin-left: 20px;">
+                                <div>- data: 16.08.2022 - 25.08.2022</div>
+                                <div>- powód: zespolenie złamania okołoprotezowego za pomocą tytanowej płytki</div>
+                            </div>
+                            <div> - Zdiagnozowane choroby</div>
+                            <div style="margin-left: 20px;">
+                                <div>- nadcisnienie tętnicze</div>
+                                <div>- cukrzyca typu II</div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+                <div (click)="rozwin(3)" style="cursor: pointer;margin: 10px"><b>Dostępna dokumentacja medyczna</b>
+                </div>
+                <div *ngIf="czyRozwiniete3">
+                    <div *ngIf="wybrany.id == 1; else d12">
+                        <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                            (click)="setKrok(2)">Morfologia krwi żylnej</button>
+                    </div>
+                    <ng-template #d12>
+                        <div *ngIf="wybrany.id == 2; else d13">
+                            <div> - Dokumentacja z ostatniej hospitalizacji – przy pacjencie</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #d13>
+                        <div *ngIf="wybrany.id == 3; else d14">
+                            <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                            (click)="setKrok(2)">Morfologia krwi żylnej</button>
+                        </div>
+                    </ng-template>
+                    <ng-template #d14>
+                        <div *ngIf="wybrany.id == 4; else d15">
+                            <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                            (click)="setKrok(2)">Morfologia krwi żylnej</button>
+                        </div>
+                    </ng-template>
+                    <ng-template #d15>
+                        <div>
+                            <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                            (click)="setKrok(2)">Morfologia krwi żylnej</button>
+                            <div> - Dokumentacja z ostatniej hospitalizacji – przy pacjencie</div>
+                        </div>
+                    </ng-template>
+                    
+                </div>
+                <div (click)="rozwin(4)" style="cursor: pointer;margin: 10px"><b>Dane antropometryczne</b></div>
+                <div *ngIf="czyRozwiniete4">
+                    <div *ngIf="wybrany.id == 1; else c12">
+                        <div> - Wzrost: 182 cm</div>
+                        <div> - Waga: 76 kg</div>
+                    </div>
+                    <ng-template #c12>
+                        <div *ngIf="wybrany.id == 2; else c13">
+                            <div> - Wzrost: 178 cm</div>
+                            <div> - Waga: 105 kg</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #c13>
+                        <div *ngIf="wybrany.id == 3; else c14">
+                            <div> - Wzrost: 178 cm</div>
+                            <div> - Waga: 92 kg</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #c14>
+                        <div *ngIf="wybrany.id == 4; else c15">
+                            <div> - Wzrost: 183 cm</div>
+                            <div> - Waga: 75 kg</div>
+                        </div>
+                    </ng-template>
+                    <ng-template #c15>
+                        <div>
+                            <div> - Wzrost: 176 cm</div>
+                            <div> - Waga: 73 kg</div>
+                        </div>
+                    </ng-template>
+
+                </div>
+
+
+            </div>
+
+            <div *ngIf="krok == 2">
+                <button style="margin-top: 10px; margin-bottom: 10px;" mat-raised-button color="primary"
+                    (click)="setKrok(1)">Wstecz</button>
+                <br>
+                <img src="../../assets/wyniki.jpg">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

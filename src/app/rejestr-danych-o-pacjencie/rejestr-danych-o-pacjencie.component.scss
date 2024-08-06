@@ -1,0 +1,35 @@
+.userMsg {
+    border-radius: 25px;
+    background: #66acee;
+    padding: 20px;
+    width: 300px;
+    overflow: auto;
+    min-height: 100px;
+  }
+
+  .gptMsg {
+    border-radius: 25px;
+    background: #d5ebff;
+    padding: 20px;
+    width: 300px;
+    overflow: auto;
+    min-height: 100px;
+  }
+
+
+  @media screen and (max-width: 100px) {
+    .contener {
+        width: 100%;
+    }
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+  }
+
+  .example-viewport {
+    height: 90%;
+    width: 100%;
+  }
