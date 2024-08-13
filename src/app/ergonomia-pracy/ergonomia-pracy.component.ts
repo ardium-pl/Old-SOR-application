@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTextComponent } from '../dialog-text/dialog-text.component';
+import { print } from '../utils/print.util';
 
 @Component({
   selector: 'app-ergonomia-pracy',
@@ -14,6 +15,20 @@ export class ErgonomiaPracyComponent {
   constructor(private dialog: MatDialog) {
 
   }
+
+   printSelectedDiv(id: string){
+    print(id)
+  }
+
+    sendEmail() {
+      const email = 'brodka.jakub@gmail.com';
+      const subject = encodeURIComponent('Subject of the Email');
+      const body = encodeURIComponent('Body of the Email');
+  
+      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+  
+      window.location.href = mailtoLink;
+    }
 
   openAlertDialog(msg: string) {
     const dialogRef = this.dialog.open(DialogTextComponent,{
