@@ -64,10 +64,16 @@
             </div>
 
 
-            <div style="display: flex; gap: 10px;">
+            <div class="buttons">
                 <button mat-raised-button color="primary" (click)="setView(1)">Publikuj</button>
-                <button mat-raised-button color="primary">Edytuj</button>
-                <button mat-raised-button color="primary">Dodaj formularz</button>
+                <div *ngIf="radio1==1" class="buttons">
+                    <button mat-raised-button color="primary"  (click)="savePDF(1)">Edytuj</button>
+                    <button mat-raised-button color="primary">Drukuj</button>
+                </div>
+                <div *ngIf="radio1==2" class="buttons">                
+                    <button mat-raised-button color="primary" (click)="savePDF(2)">Edytuj</button>
+                    <button mat-raised-button color="primary" >Drukuj</button>
+                </div>
                 <button mat-raised-button color="primary" (click)="setView(1)">Anuluj</button>
 
             </div>
@@ -173,8 +179,8 @@
                                     wykorzystanie przestrzeni</p>
                             </cdk-virtual-scroll-viewport>
                             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <button mat-raised-button color="primary">Zapisz do pliku</button>
-                                <button mat-raised-button color="primary">Drukuj</button>
+                                <button mat-raised-button color="primary" (click)="savePDF(3)">Zapisz do pliku</button>
+                                <button mat-raised-button color="primary" >Drukuj</button>
                             </div>
                         </div>
                         <div *ngIf="radio2==2">
@@ -220,7 +226,7 @@
                                     osób z niepełnosprawnością</p>
                             </cdk-virtual-scroll-viewport>
                             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <button mat-raised-button color="primary">Zapisz do pliku</button>
+                                <button mat-raised-button color="primary" (click)="savePDF(4)">Zapisz do pliku</button>
                                 <button mat-raised-button color="primary">Drukuj</button>
                             </div>
                         </div>

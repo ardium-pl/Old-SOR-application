@@ -55,4 +55,27 @@ export class ErgonomiaComponent {
   {
     this.widok = _view;
   }
+
+  savePDF(id: number) {
+    const pdfName = this.getPDFNameForSelection(id);
+    const link = document.createElement('a');
+    link.href = `../../assets/${pdfName}.pdf`;
+    link.download = `${pdfName}.pdf`;
+    link.click();
+  }
+
+  getPDFNameForSelection(selection: number): string {
+    switch (selection) {
+      case 1:
+        return 'OB_Miejsce pracy';
+      case 2: 
+        return 'OB_Bezpieczna obsługa i przemieszczanie pacjentów'
+      case 3:
+        return 'RZ_Miejsce pracy'
+      case 4:
+        return 'RZ_Bezpieczna obsługa i przemieszczanie pacjentów'  
+      default:
+        return 'pdfFile';
+    }
+  }
 }
