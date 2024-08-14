@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { sendEmail } from '../utils/mailTo.util';
 
 @Component({
   selector: 'app-dialog-text',
@@ -27,6 +28,39 @@ export class DialogTextComponent {
 
   onConfirmClick(): void {
     this.dialogRef.close(true);
+  }
+
+  sendEmail(){
+    sendEmail();
+  }
+
+  savePDF(index?: number): void {
+    const link = document.createElement('a');
+    switch(index){
+      case 1:{
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+      }
+      case 2:{
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+      }
+      case 3:{
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+      }
+      default:
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+    }
   }
 
 }
