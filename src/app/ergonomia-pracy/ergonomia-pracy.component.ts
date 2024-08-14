@@ -47,6 +47,35 @@ export class ErgonomiaPracyComponent {
     this.view = _view;
   }
 
+  savePDF(index?: number): void {
+    const link = document.createElement('a');
+    switch(index){
+      case 1:{
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+      }
+      case 2:{
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+      }
+      case 3:{
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+      }
+      default:
+        link.href = '../../assets/pdfFile.PDF'; 
+        link.download = 'pdfFile.pdf';
+        link.click();
+        break;
+    }
+  }
+
   popup()
   {
     switch(this.wybor)
