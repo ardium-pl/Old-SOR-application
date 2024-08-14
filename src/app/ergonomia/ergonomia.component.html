@@ -66,14 +66,14 @@
 
             <div class="buttons">
                 <button mat-raised-button color="primary" (click)="setView(1)">Publikuj</button>
-                <div *ngIf="radio1==1" class="buttons">
+                @if (radio1 == 1) {
                     <button mat-raised-button color="primary"  (click)="savePDF(1)">Edytuj</button>
                     <button mat-raised-button color="primary">Drukuj</button>
-                </div>
-                <div *ngIf="radio1==2" class="buttons">                
+                }
+                @else if(radio1 == 2){
                     <button mat-raised-button color="primary" (click)="savePDF(2)">Edytuj</button>
                     <button mat-raised-button color="primary" >Drukuj</button>
-                </div>
+                }
                 <button mat-raised-button color="primary" (click)="setView(1)">Anuluj</button>
 
             </div>
