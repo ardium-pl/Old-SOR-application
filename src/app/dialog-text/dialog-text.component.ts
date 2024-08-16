@@ -1,6 +1,7 @@
 import { Component, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { sendEmail } from '../utils/mailTo.util';
+import { sendEmail as sendEmailUtil } from '../utils/mailTo.util';
+import { printPdf as printPdfUtil } from '../utils/print.util';
 import { ErgonomiaPracyComponent } from '../ergonomia-pracy/ergonomia-pracy.component';
 
 @Component({
@@ -19,19 +20,15 @@ export class DialogTextComponent {
     this.cancelButtonText = data.buttonText.cancel;
   }
 
-  sendEmail(){
-    sendEmail();
-  }
-
-  savePDF() {
-    const pdfName = this.getPDFNameForSelection(this.selection);
+  savePdf() {
+    const pdfName = this.getPdfNameForSelection(this.selection);
     const link = document.createElement('a');
     link.href = `../../assets/${pdfName}.pdf`;
     link.download = `${pdfName}.pdf`;
     link.click();
   }
 
-  getPDFNameForSelection(selection: number): string {
+  getPdfNameForSelection(selection: number): string {
     switch (selection) {
       case 1:
         return 'LK_Przechowywanie i obsługa materiałów';
@@ -58,4 +55,15 @@ export class DialogTextComponent {
     }
   }
 
+  // Tu trzeba jeszcze zrobić serwer bo to nie jest takie proste
+  // Jest straszny syf w nazewnictwie
+  sendEmail(){
+    sendEmailUtil();
+  }
+
+  printPdf(){
+    const pdfName = this.getPdfNameForSelection(this.selection);
+    const pdfPath = `../../assets/${pdfName}.pdf`;
+    printPdfUtil(pdfPath);
+  }
 }

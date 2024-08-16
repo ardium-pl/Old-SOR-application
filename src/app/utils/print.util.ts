@@ -1,4 +1,4 @@
-export function print(id: string) {
+export function printHtml(id: string) {
     const printElement = document.getElementById(id);
     if (printElement) {
       const printContents = printElement.innerHTML;
@@ -12,4 +12,15 @@ export function print(id: string) {
       console.error(`Element with ID ${id} not found.`);
     }
   }
-  
+
+  export function printPdf(filePath: string) {
+    const newWindow = window.open(filePath, '_blank');
+    if (newWindow) {
+      newWindow.addEventListener('load', () => {
+        newWindow.focus();
+        newWindow.print();
+      });
+    } else {
+      console.error('Nie udało się otworzyć nowego okna.');
+    }
+  }

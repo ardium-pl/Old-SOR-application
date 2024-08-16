@@ -5,9 +5,9 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <div style="margin-right: 8px;" *ngIf="buttons">
-        <button mat-raised-button color="primary" tabindex="-1" (click)="savePDF()">Zapisz</button>
+        <button mat-raised-button color="primary" tabindex="-1" (click)="savePdf()">Zapisz</button>
         <button mat-raised-button color="primary" tabindex="-1" (click)="sendEmail()">Wyślij</button>
-        <button mat-raised-button color="primary" tabindex="-1">Drukuj</button>
+        <button mat-raised-button color="primary" tabindex="-1" (click)="printPdf()">Drukuj</button>
     </div>
     <div >
     <button mat-raised-button color="primary" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
