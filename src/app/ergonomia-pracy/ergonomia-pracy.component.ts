@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTextComponent } from '../dialog-text/dialog-text.component';
-import { printHtml } from '../utils/print.util';
+import { printPdf as printPdfUtil } from '../utils/print.util';
 import { sendEmail } from '../utils/mailTo.util';
 import { saveFileFromHTML } from '../utils/save.util';
 
@@ -17,7 +17,7 @@ export class ErgonomiaPracyComponent {
 
   constructor(private dialog: MatDialog) { }
 
-  saveSelectedDiv(index?: number): void {
+  savePdf(index?: number): void {
     const link = document.createElement('a');
     switch (index) {
       case 3: {
@@ -36,12 +36,23 @@ export class ErgonomiaPracyComponent {
     }
   }
 
-  sendSelectedDiv(): void {
+  sendEmail(): void {
     sendEmail();
   }
 
-  printSelectedDiv(id: string) {
-    printHtml(id)
+  printPdf(index: number) {
+    let filePath: string = ''
+    switch (index) {
+      case 3: {
+        filePath = '../../assets/PUNKT-KONTROLNY-3.pdf';
+        break;
+      }
+      case 56: {
+        filePath = '../../assets/PUNKT-KONTROLNY-56.pdf';
+        break;
+      }
+    }
+    printPdfUtil(filePath);
   }
 
   openAlertDialog(msg: string, selection: number) {
