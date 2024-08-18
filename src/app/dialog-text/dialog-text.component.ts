@@ -55,7 +55,6 @@ export class DialogTextComponent {
     }
   }
 
-  // Tu trzeba jeszcze zrobić serwer bo to nie jest takie proste
   // Jest straszny syf w nazewnictwie
   sendEmail(){
     sendEmailUtil();

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { printPdf as printPdfUtil } from '../utils/print.util';
+
 
 @Component({
   selector: 'app-ergonomia',
@@ -56,15 +58,15 @@ export class ErgonomiaComponent {
     this.widok = _view;
   }
 
-  savePDF(id: number) {
-    const pdfName = this.getPDFNameForSelection(id);
+  savePdf(id: number) {
+    const pdfName = this.getPdfNameForSelection(id);
     const link = document.createElement('a');
     link.href = `../../assets/${pdfName}.pdf`;
     link.download = `${pdfName}.pdf`;
     link.click();
   }
 
-  getPDFNameForSelection(selection: number): string {
+  getPdfNameForSelection(selection: number): string {
     switch (selection) {
       case 1:
         return 'OB_Miejsce pracy';
@@ -77,5 +79,11 @@ export class ErgonomiaComponent {
       default:
         return 'pdfFile';
     }
+  }
+
+  printPdf(id: number){
+    const pdfName = this.getPdfNameForSelection(id);
+    const pdfPath = `../../assets/${pdfName}.pdf`;
+    printPdfUtil(pdfPath);
   }
 }

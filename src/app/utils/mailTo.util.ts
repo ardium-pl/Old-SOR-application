@@ -1,6 +1,5 @@
-export function sendEmail(index?: number) {
+export function sendEmail() {
     const email = 'example@gmail.com';
     const mailtoLink = `mailto:${email}?`;
-    const body = index
     window.location.href = mailtoLink;
 }

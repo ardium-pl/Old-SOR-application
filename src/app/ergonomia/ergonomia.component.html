@@ -67,12 +67,12 @@
             <div class="buttons">
                 <button mat-raised-button color="primary" (click)="setView(1)">Publikuj</button>
                 @if (radio1 == 1) {
-                    <button mat-raised-button color="primary"  (click)="savePDF(1)">Edytuj</button>
-                    <button mat-raised-button color="primary">Drukuj</button>
+                    <button mat-raised-button color="primary" (click)="savePdf(1)">Edytuj</button>
+                    <button mat-raised-button color="primary" (click)="printPdf(1)">Drukuj</button>
                 }
                 @else if(radio1 == 2){
-                    <button mat-raised-button color="primary" (click)="savePDF(2)">Edytuj</button>
-                    <button mat-raised-button color="primary" >Drukuj</button>
+                    <button mat-raised-button color="primary" (click)="savePdf(2)">Edytuj</button>
+                    <button mat-raised-button color="primary" (click)="printPdf(2)">Drukuj</button>
                 }
                 <button mat-raised-button color="primary" (click)="setView(1)">Anuluj</button>
 
@@ -179,8 +179,8 @@
                                     wykorzystanie przestrzeni</p>
                             </cdk-virtual-scroll-viewport>
                             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <button mat-raised-button color="primary" (click)="savePDF(3)">Zapisz do pliku</button>
-                                <button mat-raised-button color="primary" >Drukuj</button>
+                                <button mat-raised-button color="primary" (click)="savePdf(3)">Zapisz do pliku</button>
+                                <button mat-raised-button color="primary" (click)="printPdf(3)">Drukuj</button>
                             </div>
                         </div>
                         <div *ngIf="radio2==2">
@@ -226,8 +226,8 @@
                                     osób z niepełnosprawnością</p>
                             </cdk-virtual-scroll-viewport>
                             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <button mat-raised-button color="primary" (click)="savePDF(4)">Zapisz do pliku</button>
-                                <button mat-raised-button color="primary">Drukuj</button>
+                                <button mat-raised-button color="primary" (click)="savePdf(4)">Zapisz do pliku</button>
+                                <button mat-raised-button color="primary" (click)="printPdf(4)">Drukuj</button>
                             </div>
                         </div>
 

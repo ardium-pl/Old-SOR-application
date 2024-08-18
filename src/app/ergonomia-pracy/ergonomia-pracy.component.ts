@@ -36,8 +36,8 @@ export class ErgonomiaPracyComponent {
     }
   }
 
-  sendSelectedDiv(index: number): void {
-    sendEmail(index);
+  sendSelectedDiv(): void {
+    sendEmail();
   }
 
   printSelectedDiv(id: string) {
