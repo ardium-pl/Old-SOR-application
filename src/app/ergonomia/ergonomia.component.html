@@ -64,10 +64,16 @@
             </div>
 
 
-            <div style="display: flex; gap: 10px;">
+            <div class="buttons">
                 <button mat-raised-button color="primary" (click)="setView(1)">Publikuj</button>
-                <button mat-raised-button color="primary">Edytuj</button>
-                <button mat-raised-button color="primary">Dodaj formularz</button>
+                @if (radio1 == 1) {
+                    <button mat-raised-button color="primary" (click)="savePdf(1)">Edytuj</button>
+                    <button mat-raised-button color="primary" (click)="printPdf(1)">Drukuj</button>
+                }
+                @else if(radio1 == 2){
+                    <button mat-raised-button color="primary" (click)="savePdf(2)">Edytuj</button>
+                    <button mat-raised-button color="primary" (click)="printPdf(2)">Drukuj</button>
+                }
                 <button mat-raised-button color="primary" (click)="setView(1)">Anuluj</button>
 
             </div>
@@ -173,8 +179,8 @@
                                     wykorzystanie przestrzeni</p>
                             </cdk-virtual-scroll-viewport>
                             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <button mat-raised-button color="primary">Zapisz do pliku</button>
-                                <button mat-raised-button color="primary">Drukuj</button>
+                                <button mat-raised-button color="primary" (click)="savePdf(3)">Zapisz do pliku</button>
+                                <button mat-raised-button color="primary" (click)="printPdf(3)">Drukuj</button>
                             </div>
                         </div>
                         <div *ngIf="radio2==2">
@@ -220,8 +226,8 @@
                                     osób z niepełnosprawnością</p>
                             </cdk-virtual-scroll-viewport>
                             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <button mat-raised-button color="primary">Zapisz do pliku</button>
-                                <button mat-raised-button color="primary">Drukuj</button>
+                                <button mat-raised-button color="primary" (click)="savePdf(4)">Zapisz do pliku</button>
+                                <button mat-raised-button color="primary" (click)="printPdf(4)">Drukuj</button>
                             </div>
                         </div>
 
@@ -263,26 +269,42 @@
                             zbyt
                             wysoko, co powoduje wyprost nadgarstka</p>
 
-                        <p>Wprowadź odpowiednie zalecenia:</p>
-                        <cdk-virtual-scroll-viewport (click)="setClicked1()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked1">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Oczy użytkownika
-                                    2”-3” poniżej górnej części obudowy monitora, skierowane prosto na klawiaturę i
-                                    monitor</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Monitor
-                                    umieszczony w przybliżeniu na wyciągnięcie ręki</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Odchylana taca
-                                    na klawiaturę i mysz</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Stojak na
-                                    komputer umieszczony 28”-30” nad podłogą powinien zastąpić biurko</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Oddzielny stojak
-                                    na telefon i dokumenty, z możliwością obracania</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Ustawienie
-                                    stojaka 90° od aktualnej pozycji biurka tak, aby być twarzą do pacjenta</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Używanie tabletu
-                                    lub laptopa, aby zminimalizować zajmowane miejsce</p>
+                            <p>Wprowadź odpowiednie zalecenia:</p>
+                            <div class="recommendation-container">
+                                <div class="buttons">
+                                    <button mat-raised-button color="primary" (click)="editRecommendations(1)">Edytuj</button>
+                                    <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(1)">Wstaw</button>
+                                </div>
+                                <!-- Pusta ramka na początku -->
+                                <div *ngIf="!clicked[1]" class="example-viewport2">
+                                    <div [innerHTML]="recommendations[1]"></div>
+                                </div>
+
+                                <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                                <textarea
+                                    *ngIf="clicked[1]"
+                                    [(ngModel)]="recommendations[1]"
+                                    maxlength="1000"
+                                    class="example-viewport2"
+                                    placeholder="Wprowadź swoje zalecenia tutaj...">
+                                </textarea>
+
+                            
+                                <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                                <div id="defaultText1" style="display: none;">
+                                    <ul>
+                                        <li>Oczy użytkownika 2”-3” poniżej górnej części obudowy monitora, skierowane prosto na klawiaturę i monitor</li>
+                                        <li>Monitor umieszczony w przybliżeniu na wyciągnięcie ręki</li>
+                                        <li>Odchylana taca na klawiaturę i mysz</li>
+                                        <li>Stojak na komputer umieszczony 28”-30” nad podłogą powinien zastąpić biurko</li>
+                                        <li>Oddzielny stojak na telefon i dokumenty, z możliwością obracania</li>
+                                        <li>Ustawienie stojaka 90° od aktualnej pozycji biurka tak, aby być twarzą do pacjenta</li>
+                                        <li>Używanie tabletu lub laptopa, aby zminimalizować zajmowane miejsce</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            
+
                         <b><span style="margin-left: 10px; margin-right: 20px;">2.</span> Komputer przenośny</b>
                         <p>Bieżące problemy:
                         <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Odległość monitora i
@@ -299,28 +321,48 @@
                         <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span>Wymaga przyłożenia siły
                             31,5 funta</p>
                         <p>Wprowadź odpowiednie zalecenia:</p>
-                        <cdk-virtual-scroll-viewport (click)="setClicked2()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked2">
-                                <p>Przy istniejącym stanowisku komputerowym:</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Sugerowany kurs
-                                    pisania na klawiaturze</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Umieszczenie na
-                                    stałe w pomieszczeniach do badania pacjentów, aby koła mogły być zablokowane na
-                                    stałe</p>
-                                <p>Inne opcje</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Inny rodzaj
-                                    stojaka z</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Blokowaniem kół
-                                </p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Regulowaną
-                                    wysokością</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Przestrzenią na
-                                    nogi, aby użytkownik mógł wygodnie usiąść</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Możliwość
-                                    przenoszenia laptopa, tabletu PC, PDA; używanie ich z biurkami/stojakami
-                                    umieszczonymi na stałe</p>
+
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(2)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(2)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[2]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[2]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[2]"
+                                [(ngModel)]="recommendations[2]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText2" style="display: none;">
+                                <p>Przy istniejącym stanowisku komputerowym:</p>
+                                <ul>
+                                    <li>Sugerowany kurs pisania na klawiaturze</li>
+                                    <li>Umieszczenie na stałe w pomieszczeniach do badania pacjentów, aby koła mogły być zablokowane na stałe</li>
+                                </ul>
+                                <p>Inne opcje</p>
+                                <ul>
+                                    <li>
+                                        <p>Inny rodzaj stojaka z</p>
+                                        <ul>
+                                            <li>Blokowaniem kół</li>
+                                            <li>Regulowaną wysokością</li>
+                                            <li>Przestrzenią na nogi, aby użytkownik mógł wygodnie usiąść</li>
+                                        </ul>
+                                    </li>
+                                    <li>Możliwość przenoszenia laptopa, tabletu PC, PDA; używanie ich z biurkami/stojakami umieszczonymi na stałe</li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <b><span style="margin-left: 10px; margin-right: 20px;">3.</span> Pokój pracy pielęgniarki</b>
                         <p>Bieżące problemy:</p>
@@ -335,22 +377,37 @@
                         <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Pochylona szyja</p>
                         <p>Wprowadź odpowiednie zalecenia:</p>
 
-                        <cdk-virtual-scroll-viewport (click)="setClicked3()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked3">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Stworzenie
-                                    pielęgniarkom możliwości siedzenia, aby zapewnić krótki odpoczynek</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Ustawienie
-                                    monitora bezpośrednio przed siedzącym pracownikiem w odległości ramienia</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Usunięcie
-                                    drewnianej konstrukcji, aby umożliwić przeniesienie drukarki i komputera
-                                    stacjonarnego na lewą stronę monitora</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Zainstalowanie
-                                    nowej klawiatury i tacy na mysz z negatywnym pochylaniem, które pomogą zapobiegać
-                                    zespołowi cieśni nadgarstka</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span>Zapewnienie
-                                    siedzenia zgodnie z poniższymi slajdami, poprzez usunięcie drukarki</p>
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(3)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(3)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[3]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[3]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[3]"
+                                [(ngModel)]="recommendations[3]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText3" style="display: none;">
+                                <ul>
+                                    <li>Stworzenie pielęgniarkom możliwości siedzenia, aby zapewnić krótki odpoczynek</li>
+                                    <li>Ustawienie monitora bezpośrednio przed siedzącym pracownikiem w odległości ramienia</li>
+                                    <li>Usunięcie drewnianej konstrukcji, aby umożliwić przeniesienie drukarki i komputera stacjonarnego na lewą stronę monitora</li>
+                                    <li>Zainstalowanie nowej klawiatury i tacy na mysz z negatywnym pochylaniem, które pomogą zapobiegać zespołowi cieśni nadgarstka</li>
+                                    <li>Zapewnienie siedzenia zgodnie z poniższymi slajdami, poprzez usunięcie drukarki</li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <b><span style="margin-left: 10px; margin-right: 20px;">4.</span> Siedzenie</b>
                         <p>Bieżące problemy</p>
@@ -363,29 +420,44 @@
                             podłodze. To z kolei prowadzi do niewystarczającego podparcia lędźwiowego.</p>
 
                         <p>Wprowadź odpowiednie zalecenia:</p>
-                        <cdk-virtual-scroll-viewport (click)="setClicked4()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked4">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Wymiary krzeseł
-                                    powinny umożliwić korzystanie z nich jak najszerszemu kręgowi pracowników,
-                                    spełniając poniższe kryteria:</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Szerokość
-                                    miednicy siedziska: 18,3 "plus 1" na odzież z każdej strony</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Szerokość
-                                    oparcia: 20,6”</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Głębokość
-                                    miednicy siedziska: 16”</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Wysokość
-                                    krzesła: 14,5”-19”</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Wysokość krzesła
-                                    powinna być łatwo regulowana, gdy użytkownik siedzi na nim. Użytkownik powinien mieć
-                                    możliwość stabilnego postawienia stóp na ziemi, a nogi powinny być ustawione
-                                    równolegle do podłoża</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Komfortowe
-                                    wyścielenie miednicy siedziska na i odpowiednie podparcie odcinka lędźwiowego</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Oparcie powinno
-                                    być odchylone, aby kąt między górną a dolną częścią ciała wynosił 110°</p>
+
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(4)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(4)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[4]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[4]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[4]"
+                                [(ngModel)]="recommendations[4]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText4" style="display: none;">
+                                <ul>
+                                    <li>Wymiary krzeseł powinny umożliwić korzystanie z nich jak najszerszemu kręgowi pracowników, spełniając poniższe kryteria:
+                                        <ul>
+                                            <li>Szerokość miednicy siedziska: 18,3 "plus 1" na odzież z każdej strony</li>
+                                            <li>Szerokość oparcia: 20,6”</li>
+                                            <li>Głębokość miednicy siedziska: 16”</li>
+                                            <li>Wysokość krzesła: 14,5”-19”</li>
+                                        </ul>
+                                    </li>
+                                    <li>Wysokość krzesła powinna być łatwo regulowana, gdy użytkownik siedzi na nim. Użytkownik powinien mieć możliwość stabilnego postawienia stóp na ziemi, a nogi powinny być ustawione równolegle do podłoża</li>
+                                    <li>Komfortowe wyścielenie miednicy siedziska na i odpowiednie podparcie odcinka lędźwiowego</li>
+                                    <li>Oparcie powinno być odchylone, aby kąt między górną a dolną częścią ciała wynosił 110°</li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <h3 style="color: #365F91;">Schematy pracy Sala pogotowia</h3>
                         <p>Aktualne problemy</p>
@@ -400,34 +472,51 @@
 
                         <p>Wprowadź odpowiednie zalecenia:</p>
 
-                        <cdk-virtual-scroll-viewport (click)="setClicked5()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked5">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Układ
-                                    promieniowy - Wszystko jest centralnie zlokalizowane</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Minimalny ruch
-                                    ze względu na centralną bliskość obszarów pacjentów i obszarów roboczych z wizualnym
-                                    dostępem do wszystkich pomieszczeń</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Obszar główny
-                                    zawiera: stanowisko pielęgniarek, karty pacjentów, laboratorium, stanowisko na
-                                    formalności, zaopatrzenie</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Zwiększa
-                                    efektywność wykorzystania przestrzeni i przepływu ruchu</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Zwiększone
-                                    powierzchnie robocze na dwóch wysokościach, które mogą służyć osobom w pozycji
-                                    stojącej i siedzącej</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Maty
-                                    przeciwzmęczeniowe</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Zmniejszają
-                                    zmęczenie i dyskomfort nóg i pleców</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Zwiększają
-                                    przepływ krwi i ilości tlenu docierającego do serca</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Pozwalają na
-                                    częste zmiany i zmienność orientacji ciała</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Odporna na plamy
-                                    powierzchnia z polipropylenu ułatwia konserwację</p>
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(5)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(5)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[5]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[5]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[5]"
+                                [(ngModel)]="recommendations[5]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText5" style="display: none;">
+                                <ul>
+                                    <li>Układ promieniowy - Wszystko jest centralnie zlokalizowane
+                                        <ul>
+                                            <li>Minimalny ruch ze względu na centralną bliskość obszarów pacjentów i obszarów roboczych z wizualnym dostępem do wszystkich pomieszczeń</li>
+                                            <li>Obszar główny zawiera: stanowisko pielęgniarek, karty pacjentów, laboratorium, stanowisko na formalności, zaopatrzenie</li>
+                                            <li>Zwiększa efektywność wykorzystania przestrzeni i przepływu ruchu</li>
+                                            <li>Zwiększone powierzchnie robocze na dwóch wysokościach, które mogą służyć osobom w pozycji stojącej i siedzącej</li>
+                                        </ul>
+                                    </li>
+                                    <li>Maty przeciwzmęczeniowe
+                                        <ul>
+                                            <li>Zmniejszają zmęczenie i dyskomfort nóg i pleców</li>
+                                            <li>Zwiększają przepływ krwi i ilości tlenu docierającego do serca</li>
+                                            <li>Pozwalają na częste zmiany i zmienność orientacji ciała</li>
+                                            <li>Odporna na plamy powierzchnia z polipropylenu ułatwia konserwację</li>
+                                        </ul>
+                                    </li>
+      
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+
                     <div *ngIf="radio3==2">
                         <h3 style="color: #365F91;"> Wózki do transportu chorych składane na kółkach </h3>
                         <p>Bieżące problemy:</p>
@@ -450,25 +539,50 @@
                             ryzyko jest wysokie i działania należy podjąć wkrótce</p>
 
                         <p>Wprowadź odpowiednie zalecenia:</p>
-                        <cdk-virtual-scroll-viewport (click)="setClicked6()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked6">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Manewrowość</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Hydrauliczny
-                                    podnośnik mechaniczny: do podnoszenia i opuszczania, także do oparcia</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Lepsze uchwyty
-                                </p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Mechanizm ręczny
-                                    do blokowania kół</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Sugerowane
-                                    wymiary</p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Szerokość: 37”
-                                </p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Długość: 70”-80”
-                                </p>
-                                <p><span style="margin-left: 30px; margin-right: 10px;"><B>◦</B></span> Waga pacjenta do
-                                    1000 funtów</p>
+
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(6)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(6)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[6]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[6]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[6]"
+                                [(ngModel)]="recommendations[6]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText6" style="display: none;">
+                                <ul>
+                                    <li>Manewrowość
+                                        <ul>
+                                            <li>Hydrauliczny podnośnik mechaniczny: do podnoszenia i opuszczania, także do oparcia</li>
+                                            <li>Lepsze uchwyty</li>
+                                            <li>echanizm ręczny do blokowania kół</li>
+                                        </ul>
+                                    </li>
+                                    <li>Sugerowane wymiary
+                                        <ul>
+                                            <li>Szerokość: 37”</li>
+                                            <li>Długość: 70”-80”</li>
+                                            <li>Waga pacjenta do 1000 funtów</li>
+                                        </ul>
+                                    </li>
+      
+                                </ul>
+                            </div>
+                        </div>
+
+
                         <h3 style="color: #365F91;">Kontrola zakażeń</h3>
                         <p>Bieżące problemy:</p>
                         <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Częste infekcje podczas
@@ -481,27 +595,40 @@
                             oznakowania miejsc do
                             higieny rąk i przechowywania środków ochrony osobistej</p>
                         <p>Wprowadź odpowiednie zalecenia:</p>
-                        <cdk-virtual-scroll-viewport (click)="setClicked7()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked7">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Ustanowić
-                                    procedury zapewnienia higieny rąk i higieniczne urządzenia do ich mycia.
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Promować środki
-                                    kontroli zakażeń, aby wyeliminować lub zmniejszyć ryzyko infekcji
-                                    podczas pracy w zakresie opieki.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Zapewnić
-                                    odpowiednie programy szczepień dla pracowników opieki o wyższym ryzyku
-                                    zakażenia w pracy.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Dokonać wyboru i
-                                    używać środków ochrony osobistej, które są odpowiednie do ochrony
-                                    przed potencjalnymi zakażeniami.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Ustanowić
-                                    procedury ochrony osób objętych opieką i pracowników opieki przed osobami
-                                    zakażonymi.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Ustanowić i
-                                    stosować plany awaryjne kontroli zakażeń, w tym plan ciągłości działania
-                                    (ang. BCP, business continuity plan).</p>
+
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(7)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(7)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[7]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[7]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[7]"
+                                [(ngModel)]="recommendations[7]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText7" style="display: none;">
+                                <ul>
+                                    <li>stanowić procedury zapewnienia higieny rąk i higieniczne urządzenia do ich mycia.</li>
+                                    <li>Promować środki kontroli zakażeń, aby wyeliminować lub zmniejszyć ryzyko infekcji podczas pracy w zakresie opieki.</li>
+                                    <li>Zapewnić odpowiednie programy szczepień dla pracowników opieki o wyższym ryzyku zakażenia w pracy.</li>
+                                    <li>Dokonać wyboru i używać środków ochrony osobistej, które są odpowiednie do ochrony przed potencjalnymi zakażeniami.</li>
+                                    <li>Ustanowić procedury ochrony osób objętych opieką i pracowników opieki przed osobami zakażonymi.</li>
+                                    <li>Ustanowić i stosować plany awaryjne kontroli zakażeń, w tym plan ciągłości działania (ang. BCP, business continuity plan).</li>
+                                </ul>
+                            </div>
+                        </div>
+
                         <h3 style="color: #365F91;">Organizacja pracy i bezpieczeństwo pacjentów</h3>
                         <p>Bieżące problemy:</p>
                         <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Nieczytelny podział
@@ -518,16 +645,39 @@
                         <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Brak czytelnego
                             oznakowania gdzie są dostępne wózki dla osób z niepełnosprawnością</p>
                         <p>Wprowadź odpowiednie zalecenia:</p>
-                        <cdk-virtual-scroll-viewport (click)="setClicked8()" itemSize="50" class="example-viewport2">
-                            <div *ngIf="clicked8">
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Przeprowadzać krótkie spotkanie przed pracą, aby wspólnie zaplanować zadania i promować komunikację i klimat wzajemnego wspierania się wśród menedżerów i pracowników.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Ustalić harmonogramy pracy, aby uniknąć nadmiernych godzin pracy i zapewnić wystarczającą ilość okresów odpoczynku i krótkich przerw.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Dostosować obiekty, sprzęt i metody pracy do osób niepełnosprawnych, aby mogły one bezpiecznie i wydajnie wykonywać swoją pracę.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Zaplanować i wdrożyć praktyczne środki zapobiegania stresowi w pracy poprzez współpracę menedżerów i pracowników oraz zorganizować szkolenia z tych środków.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Promować bezpieczniejsze usługi opieki zdrowotnej i kulturę bezpieczeństwa pacjentów obejmującą personel, kierownictwo i pacjentów.</p>
-                                <p><span style="margin-left: 10px; margin-right: 10px;"><B>•</B></span> Wdrażać partycypacyjne doskonalenie miejsca pracy poprzez uczenie się się na przykładzie dobrych praktyk możliwych do stosowania w lokalnych warunkach. </p>                           
+
+                        <div class="recommendation-container">
+                            <div class="buttons">
+                                <button mat-raised-button color="primary" (click)="editRecommendations(8)">Edytuj</button>
+                                <button mat-raised-button color="primary" (click)="insertDefaultRecommendations(8)">Wstaw</button>
                             </div>
-                        </cdk-virtual-scroll-viewport>
+                            <!-- Pusta ramka na początku -->
+                            <div *ngIf="!clicked[8]" class="example-viewport2">
+                                <div [innerHTML]="recommendations[8]"></div>
+                            </div>
+
+                            <!-- Pole edycyjne, pojawia się po kliknięciu "Edytuj" -->
+                            <textarea
+                                *ngIf="clicked[8]"
+                                [(ngModel)]="recommendations[8]"
+                                maxlength="1000"
+                                class="example-viewport2"
+                                placeholder="Wprowadź swoje zalecenia tutaj...">
+                            </textarea>
+
+                        
+                            <!-- Domyślny tekst pokazujący się po kliknięciu Wstaw -->
+                            <div id="defaultText8" style="display: none;">
+                                <ul>
+                                    <li>Przeprowadzać krótkie spotkanie przed pracą, aby wspólnie zaplanować zadania i promować komunikację i klimat wzajemnego wspierania się wśród menedżerów i pracowników</li>
+                                    <li>Ustalić harmonogramy pracy, aby uniknąć nadmiernych godzin pracy i zapewnić wystarczającą ilość okresów odpoczynku i krótkich przerw</li>
+                                    <li>Dostosować obiekty, sprzęt i metody pracy do osób niepełnosprawnych, aby mogły one bezpiecznie i wydajnie wykonywać swoją pracę</li>
+                                    <li>Zaplanować i wdrożyć praktyczne środki zapobiegania stresowi w pracy poprzez współpracę menedżerów i pracowników oraz zorganizować szkolenia z tych środków</li>
+                                    <li>Promować bezpieczniejsze usługi opieki zdrowotnej i kulturę bezpieczeństwa pacjentów obejmującą personel, kierownictwo i pacjentów</li>
+                                    <li>Wdrażać partycypacyjne doskonalenie miejsca pracy poprzez uczenie się się na przykładzie dobrych praktyk możliwych do stosowania w lokalnych warunkach.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

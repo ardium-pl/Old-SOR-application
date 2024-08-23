@@ -33,7 +33,7 @@
                   <mat-option *ngFor="let t of wybory2" [value]="t.value">{{t.text}}</mat-option>
                 </mat-select>
               </mat-form-field>
-            <div *ngIf="wybor2==1">
+            <div *ngIf="wybor2==1" id="card-3">
                 <h3><b> Punkt kontrolny 3. Zapewnić, aby trasy transportowe były równe, nie były śliskie i pozbawione były przeszkód </b></h3>
                 <p><b>DLACZEGO</b></p>
                 <div style="border: 1px solid;">
@@ -64,13 +64,13 @@
                 </div> 
 
                 <div style="display: flex; gap: 10px;  margin-top: 10px;">
-                    <button mat-raised-button color="primary">Zapisz</button>
-                    <button mat-raised-button color="primary">Wyślij</button>
-                    <button mat-raised-button color="primary">Drukuj</button>
+                    <button mat-raised-button color="primary" (click)="savePdf(3)">Zapisz</button>
+                    <button mat-raised-button color="primary" (click)="sendEmail()">Wyślij</button>
+                    <button mat-raised-button color="primary" (click)="printPdf(3)">Drukuj</button>
                     <button mat-raised-button  (click)="close()" color="primary">Zamknij</button>
                 </div>
             </div>
-            <div *ngIf="wybor2==2">
+            <div *ngIf="wybor2==2" id="card-56">
                 <h3><b> Punkt kontrolny 56. Ustalać grafiki pracy w taki sposób, aby uniknąć nadmiernych godzin pracy i zapewnić wystarczającą ilość okresów odpoczynku i krótkich przerw.</b></h3>
                 <p><b>DLACZEGO</b></p>
                 <div style="border: 1px solid;">
@@ -112,9 +112,9 @@
                 </div> 
 
                 <div style="display: flex; gap: 10px; margin-top: 10px;">
-                    <button mat-raised-button color="primary">Zapisz</button>
-                    <button mat-raised-button color="primary">Wyślij</button>
-                    <button mat-raised-button color="primary">Drukuj</button>
+                    <button mat-raised-button color="primary" (click)="savePdf(56)">Zapisz</button>
+                    <button mat-raised-button color="primary" (click)="sendEmail()">Wyślij</button>
+                    <button mat-raised-button color="primary" (click)="printPdf(56)">Drukuj</button>
                     <button mat-raised-button (click)="close()" color="primary">Zamknij</button>
                 </div>
             </div>

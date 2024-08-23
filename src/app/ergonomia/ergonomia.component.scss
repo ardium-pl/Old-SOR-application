@@ -87,9 +87,23 @@
     width: 800px;
     border: 1px solid black;
     line-height: 15px;
+    padding: 10px; /* Dodanie paddingu, aby tekst nie przylegał do krawędzi */
+    overflow-y: auto; /* Dodanie przewijania, jeśli tekst będzie dłuższy */
+    box-sizing: border-box;
   }
   
   .example-item {
     height: 50px;
   }
   
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: right;
+  }
+
+  .recommendation-container {
+    margin-left: 10px;
+    height: 280px;
+  }
