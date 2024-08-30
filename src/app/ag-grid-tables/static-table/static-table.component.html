@@ -1,0 +1,11 @@
+<ag-grid-angular
+  class="ag-theme-custom"
+  domLayout='autoHeight'
+  [rowData]="rowData()"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [suppressScrollOnNewData]="true"
+  (cellValueChanged)="onCellValueChanged($event)"
+  (gridReady)="onGridReady($event)"
+>
+</ag-grid-angular>

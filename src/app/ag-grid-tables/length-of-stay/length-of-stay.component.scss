@@ -1,0 +1,52 @@
+:host {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ag-grid-angular {
+  height: var(--grid-height);
+  width: var(--grid-width);
+
+  margin-top: var(--grid-ofset);
+}
+
+::ng-deep {
+  app-length-of-stay {
+    // Granatowa granica pionowa
+    .pielegniarki:not(.wydajnosc),
+    .lekarze:not(.wydajnosc),
+    .opoznienie-wydajnosc,
+    .opoznienie-zmiennosc,
+    .opoznienie-ogolem,
+    .lekarz.obsluga,
+    .lekarz.lq,
+    .lekarz.ag-header-group-cell,
+    .pielegniarka.obsluga,
+    .pielegniarka.lq,
+    .pielegniarka.ag-header-group-cell {
+      border-left: var(--standard-border);
+      border-left-color: var(--dark-blue);
+    }
+
+    .ag-cell {
+      // Pierwsza kolumna + to co ma mieć grubszą czcionkę
+      &.ag-column-first,
+      &.liczba,
+      .ag-input-field-input {
+        color: black;
+        font-weight: 500;
+      }
+
+      // Jasnoniebieskie tło
+      &.liczba,
+      &.obsluga,
+      &.lq {
+        background-color: var(--white);
+      }
+    }
+  }
+}
