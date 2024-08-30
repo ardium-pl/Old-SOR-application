@@ -36,7 +36,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { TablesNewComponent } from './tables-new/tables-new.component';
+import { AgGridTablesModule } from './ag-grid-tables/ag-grid-tables.module';
 
 @NgModule({
   declarations: [
@@ -56,11 +56,11 @@ import { TablesNewComponent } from './tables-new/tables-new.component';
     RejestrDanychOPacjencieComponent,
     ProcesDiagnozowaniaComponent,
     EfektywneWykorzystanieZasobowComponent,
-    TablesNewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AgGridTablesModule,
     Projekt1Module,
     Projekt2Module,
     Projekt3Module,

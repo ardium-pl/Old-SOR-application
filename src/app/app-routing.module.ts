@@ -14,7 +14,7 @@ import { PanelPacjentaComponent } from './panel-pacjenta/panel-pacjenta.componen
 import { RejestrDanychOPacjencieComponent } from './rejestr-danych-o-pacjencie/rejestr-danych-o-pacjencie.component';
 import { ProcesDiagnozowaniaComponent } from './proces-diagnozowania/proces-diagnozowania.component';
 import { EfektywneWykorzystanieZasobowComponent } from './efektywne-wykorzystanie-zasobow/efektywne-wykorzystanie-zasobow.component';
-import { TablesNewComponent } from './tables-new/tables-new.component';
+import { TabsMenuComponent } from './ag-grid-tables/tabs-menu/tabs-menu.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'waskie-gardla-identyfikacja',
-    component: TablesNewComponent,
+    component: TabsMenuComponent,
   },
   {
     path: 'ergonomia',
