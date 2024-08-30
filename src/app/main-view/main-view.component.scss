@@ -34,17 +34,19 @@
   
     .column {
       background: #e3f2fd;
+      background: #1370b1; // temp.
       margin: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 18px;
       border-radius: 10px;
-      background-image: radial-gradient(
-        circle 346px at 0.3% 100%,
-        #3e4ca7 0%,
-        #6dd1ff 100.7%
-      );
+      // temp.
+      // background-image: radial-gradient(
+      //   circle 346px at 0.3% 100%,
+      //   #3e4ca7 0%,
+      //   #6dd1ff 100.7%
+      // );
       text-align: center;
       box-shadow: 3px 2px 5px 0px #ababab;
       height: 100%;

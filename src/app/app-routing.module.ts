@@ -14,81 +14,77 @@ import { PanelPacjentaComponent } from './panel-pacjenta/panel-pacjenta.componen
 import { RejestrDanychOPacjencieComponent } from './rejestr-danych-o-pacjencie/rejestr-danych-o-pacjencie.component';
 import { ProcesDiagnozowaniaComponent } from './proces-diagnozowania/proces-diagnozowania.component';
 import { EfektywneWykorzystanieZasobowComponent } from './efektywne-wykorzystanie-zasobow/efektywne-wykorzystanie-zasobow.component';
+import { TablesNewComponent } from './tables-new/tables-new.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainViewComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+  },
+  {
+    path: 'waskie-gardla-identyfikacja',
+    component: TablesNewComponent,
   },
   {
     path: 'ergonomia',
     component: ErgonomiaComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'weryfikacja-stanu',
     component: WeryfikacjaStanuPacjentaComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard],
   },
   {
     path: 'ergonomia-pracy',
     component: ErgonomiaPracyComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard],
   },
   {
     path: 'wspomaganie-decyzji',
     component: WspomaganieDecyzjiComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'sygnalizowanie-anomalii',
     component: SygnalizowanieAnomaliiComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'algorytm-detekcji',
     component: AlgorytmDetekcjiComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'usprawnienie-planowania-zabiegow',
     component: UsprawnieniePlanowaniaZabiegowComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'panel-pacjenta',
     component: PanelPacjentaComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'rejestr-danych-o-pacjencie',
     component: RejestrDanychOPacjencieComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'proces-diagnozowania',
     component: ProcesDiagnozowaniaComponent,
-    canActivate: [AuthGuard] 
-  }
-  ,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'efektywne-wykorzystanie-zasobow',
     component: EfektywneWykorzystanieZasobowComponent,
-    canActivate: [AuthGuard] 
-  }
-
+    canActivate: [AuthGuard],
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

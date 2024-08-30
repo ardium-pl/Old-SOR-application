@@ -31,11 +31,12 @@ import { PanelPacjentaComponent } from './panel-pacjenta/panel-pacjenta.componen
 import { RejestrDanychOPacjencieComponent } from './rejestr-danych-o-pacjencie/rejestr-danych-o-pacjencie.component';
 import { ProcesDiagnozowaniaComponent } from './proces-diagnozowania/proces-diagnozowania.component';
 import { MatTableModule } from '@angular/material/table';
-import { EfektywneWykorzystanieZasobowComponent } from './efektywne-wykorzystanie-zasobow/efektywne-wykorzystanie-zasobow.component'; 
-import {MatRadioModule} from '@angular/material/radio';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { EfektywneWykorzystanieZasobowComponent } from './efektywne-wykorzystanie-zasobow/efektywne-wykorzystanie-zasobow.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { TablesNewComponent } from './tables-new/tables-new.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     PanelPacjentaComponent,
     RejestrDanychOPacjencieComponent,
     ProcesDiagnozowaniaComponent,
-    EfektywneWykorzystanieZasobowComponent
+    EfektywneWykorzystanieZasobowComponent,
+    TablesNewComponent
   ],
   imports: [
     BrowserModule,
@@ -77,9 +79,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatRadioModule,
     MatCheckboxModule,
     ScrollingModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
   providers: [AppComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
