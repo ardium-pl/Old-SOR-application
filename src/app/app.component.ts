@@ -99,8 +99,8 @@ export class AppComponent {
         }
       });
 
-      if (!this.modalOpened)
-        this.openAlertDialog();
+      // if (!this.modalOpened)
+      //   this.openAlertDialog();
     }
   }
 }

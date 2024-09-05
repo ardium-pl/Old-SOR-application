@@ -1,18 +1,21 @@
 :host {
   height: 100%;
   width: 100%;
+  padding-top: 3%;
+  padding-bottom: 5%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  // gap: 10px;
+
+  background-color: rgba(208, 0, 255, 0.29); // TEMPORARY
 }
 
 .mat-tabs-container {
-  height: 700px;
+  height: 100%;
   width: 90%;
-}
 
-.custom-mat-tab-class {
-  font-weight: bold;
+  background-color: aqua; // TEMPORARY
 }
