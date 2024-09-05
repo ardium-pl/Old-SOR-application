@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HourlyDataService } from './hourly-data.service';
 import { StaticDataService } from './static-data.service';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +6,8 @@ import { daneGodzinowe } from './interfaces/hour';
 import { apiUrl } from './utils/apiUrl';
 import { StaticRow } from './interfaces/static-row';
 import { LABELS_ZASOBY, RZAD_OCZEKIWANIE_NA_PRZYJECIE, RZAD_TRIAGE } from './constants';
+import { GridLoadingOverlayComponent } from './grid-loading-overlay/grid-loading-overlay.component';
+import { WarningContainerComponent } from './warning-container/warning-container.component';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +17,13 @@ export class DataFetchingService {
   readonly staticDataService = inject(StaticDataService);
   readonly hourlyDataService = inject(HourlyDataService);
 
+  readonly noRowsOverlayComponent = WarningContainerComponent;
+  readonly gridLoadingOverlayComponent = GridLoadingOverlayComponent;
+  readonly shouldRenderTables = signal<boolean>(false);
+  readonly isLoading = signal<boolean>(false);
+
   fetchRowData(date: string) {
+    this.isLoading.set(true);
     const sub = this.http.get<any>(apiUrl('/dane'), { params: { date: date } }).subscribe({
       next: res => {
         console.log('✅ Response received sucessfully, response body: ', res);
@@ -88,17 +96,28 @@ export class DataFetchingService {
           // set staticDataService rowData
           this.staticDataService.applyRowCalculations(mappedDataStatic);
           console.log('✅ Successfully initialized table data (staticDataService)!');
+
+          this.shouldRenderTables.set(true);
         } catch (err) {
-          console.log('❌ An error occured during initializing table data from the response body, error message: ', err, '❌');
+          console.log('❌ An error occured during initializing table data from the response body. ❌\nError message:\n', err);
+          // clear table data
+          this.shouldRenderTables.set(false);
+          this.staticDataService.rowData.set([]);
+          this.hourlyDataService.rowData.set([]);
+          this.hourlyDataService.summaryRowTop.set({ id: 24 });
+          this.hourlyDataService.summaryRowBottom.set({ id: 25 });
         }
       },
       error: err => {
         console.log('❌ Error performing the http request, error message: ', err, '❌');
         sub.unsubscribe();
+        this.isLoading.set(false);
         console.log('⚙️ Subscription terminanated by unsubscribing.');
+      },
+      complete: () => {
+        sub.unsubscribe();
+        this.isLoading.set(false);
       },
     });
   }
-
-  constructor() {}
 }

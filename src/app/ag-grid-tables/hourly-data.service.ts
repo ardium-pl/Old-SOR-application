@@ -1,24 +1,26 @@
-import { inject, Injectable, signal } from '@angular/core';
-import * as MoreRounding from 'more-rounding';
-import { CONSTANTS } from './constants';
-import { Hour, kolejka, daneGodzinowe } from './interfaces/hour';
-import { LekarzLubPielegniarka, Zasoby } from './interfaces/zasoby';
-import { SummaryBottom, SummaryTop } from './interfaces/summaries';
-import { Godzina, LQparams, SredniCzasNaPacjenta } from './utils/utils';
+import { Injectable, signal } from '@angular/core';
 import {
-  defaultRowDataHourly,
-  defaultSummaryRowBottom,
-  defaultSummaryRowTop,
-  defaultWoczorajszaKolejka,
-} from './utils/default-table-data';
+  DEFAULT_SUMMARY_ROW_TOP,
+  DEFAULT_SUMMARY_ROW_BOTTOM,
+  DEFAULT_KOLEJKA,
+  WSPOLCZYNNIK_V,
+  SREDNI_CZAS_NA_PACJENTA,
+} from './constants';
+import { daneGodzinowe, Hour} from './interfaces/hour';
+import { SummaryBottom, SummaryTop } from './interfaces/summaries';
+import { LekarzLubPielegniarka, Zasoby } from './interfaces/zasoby';
+import { Kolejka, LQparams } from './interfaces/other-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HourlyDataService {
-  readonly currentDayOfWeek = signal<number>(0);
-
-  readonly currentDate = signal<Date>(new Date(2024, 7, 7));
+  readonly minValue = signal<number>(0);
+  readonly maxValue = signal<number>(0);
+  readonly wczorajszaKolejka = signal<Kolejka>(DEFAULT_KOLEJKA);
+  readonly rowData = signal<Hour[]>([]);
+  readonly summaryRowTop = signal<SummaryTop | { id: 24 }>({ id: 24 });
+  readonly summaryRowBottom = signal<SummaryBottom | { id: 25 }>({ id: 25 });
 
   applyHourCalculations(daneGodzinowe: daneGodzinowe[], changedRow?: daneGodzinowe) {
     if (changedRow) {
@@ -65,7 +67,6 @@ export class HourlyDataService {
       const hour = hours[index];
       const previousHour = index > 0 ? hours[index - 1] : hours[0];
 
-      // this.obliczOczekiwaneWizyty(hour); // Tego nie trzeba wywoływać jak bierzemy dane o l. pacjentów z backendu
       this.obliczWydajnosc(hour, previousHour, hours[0]);
       this.obliczWaskaWydajnosc(hour);
       this.obliczWaskiZasob(hour);
@@ -93,11 +94,6 @@ export class HourlyDataService {
     this.applySummaryCalcuationsForPinnedRows(hours);
   }
 
-  // Jeśli oblicznia odnośnie przyszłej oczekiwanej liczby pacjentów wykonywane będą na backendzie to poniższą funkcje można usunąć
-  obliczOczekiwaneWizyty(hour: Hour) {
-    hour.liczbaWizyt = 7 * CONSTANTS.pacjentDzien * CONSTANTS.godzina[hour.godzina] * CONSTANTS.dzien[this.currentDayOfWeek()];
-  }
-
   obliczWydajnosc(hour: Hour, previousHour: Hour, hourZero: Hour) {
     for (const zasob of Object.values(Zasoby)) {
       let liczbaZasobow: number;
@@ -108,7 +104,7 @@ export class HourlyDataService {
       } else {
         liczbaZasobow = zasob === 'lozkoObserwacja' ? hour.zasoby[zasob] : previousHour.zasoby[zasob];
       }
-      hour.wydajnosc[zasob] = liczbaZasobow / CONSTANTS.sredniCzasNaPacjenta[zasob];
+      hour.wydajnosc[zasob] = liczbaZasobow / SREDNI_CZAS_NA_PACJENTA[zasob];
     }
   }
 
@@ -128,10 +124,10 @@ export class HourlyDataService {
         hour.waskiZasob = 'Łóżka';
         break;
       case hour.wydajnosc.lozkoObserwacja:
-        hour.waskiZasob = 'Obs. Łóżka';
+        hour.waskiZasob = 'Łóżka obs.';
         break;
       default:
-        hour.waskiZasob = 'Demand';
+        hour.waskiZasob = 'Popyt';
     }
   }
 
@@ -169,12 +165,12 @@ export class HourlyDataService {
         // Calling Lq function implemented from VBA script
         hour.lq[zasob] = this.Lq({
           arrivalRate: hour.liczbaWizyt,
-          serviceRate: 1 / CONSTANTS.sredniCzasNaPacjenta[zasob], // Wydajnosc godzinowa 1 zasobu
+          serviceRate: 1 / SREDNI_CZAS_NA_PACJENTA[zasob], // Wydajnosc godzinowa 1 zasobu
           servers: hour.zasoby[zasob],
         });
 
         if (typeof hour.lq[zasob] === 'number') {
-          (hour.lq[zasob] as number) *= CONSTANTS.wspolczynnikV;
+          (hour.lq[zasob] as number) *= WSPOLCZYNNIK_V;
         }
       }
     }
@@ -255,19 +251,9 @@ export class HourlyDataService {
     }
   }
 
-  consoleLogLq() {
-    let calculatedLq = this.Lq({
-      arrivalRate: 5.66,
-      serviceRate: 1.374, // Wydajnosc godzinowa 1 lekarza
-      servers: 8,
-    }) as number;
-
-    calculatedLq = MoreRounding.roundToPrecision(calculatedLq, 3);
-  }
-
   applySummaryCalcuationsForPinnedRows(hours: Hour[]) {
-    const summaryRowTop = { ...this.summaryRowTop() };
-    const summaryRowBottom = { ...this.summaryRowBottom() };
+    const summaryRowTop = { ...DEFAULT_SUMMARY_ROW_TOP };
+    const summaryRowBottom = { ...DEFAULT_SUMMARY_ROW_BOTTOM };
 
     summaryRowTop.liczbaWizyt = hours.reduce((acc, hour) => acc + hour.liczbaWizyt, 0);
 
@@ -298,11 +284,4 @@ export class HourlyDataService {
     this.minValue.set(min);
     this.maxValue.set(max);
   }
-
-  readonly minValue = signal<number>(0);
-  readonly maxValue = signal<number>(0);
-  readonly wczorajszaKolejka = signal<kolejka>(defaultWoczorajszaKolejka);
-  readonly rowData = signal<Hour[]>(defaultRowDataHourly);
-  readonly summaryRowTop = signal<SummaryTop>(defaultSummaryRowTop);
-  readonly summaryRowBottom = signal<SummaryBottom>(defaultSummaryRowBottom);
 }
