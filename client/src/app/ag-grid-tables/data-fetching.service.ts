@@ -26,7 +26,8 @@ export class DataFetchingService {
     this.isLoading.set(true);
     const sub = this.http.get<any>(apiUrl('/dane'), { params: { date: date } }).subscribe({
       next: res => {
-        console.log('✅ Response received sucessfully, response body: ', res);
+        // console.log('✅ Response received sucessfully, response body: ', res);
+        console.log('✅ Response received sucessfully!');
         try {
           const mappedDataHourly = (res.daneGodzinowe as any[]).map((v, i): daneGodzinowe => {
             return {
