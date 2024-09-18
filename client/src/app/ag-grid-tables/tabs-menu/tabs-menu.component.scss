@@ -1,0 +1,18 @@
+:host {
+  // Adjust tables placement so that they aren't hidden by the navbar
+  padding: 3.5rem 0;
+  gap: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-tabs-container {
+  width: 90%;
+}
+
+.custom-mat-tab-class {
+  font-weight: bold;
+}
